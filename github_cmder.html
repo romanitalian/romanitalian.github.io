@@ -1,90 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-	<meta charset="UTF-8">
-	<title>Как в cmder клонировать репозиторий github и залить изменения в master (os: windows)</title>
+    <meta charset="UTF-8">
+    <title>Как в cmder клонировать репозиторий github и залить изменения в master (os: windows)</title>
 </head>
 <body>
-<div dir="ltr" style="text-align: left;" trbidi="on">
-	<h2 style="text-align: left;"><a href="/">romanitalian notes</a> / <b>Посредством чего работать с git/github:</b></h2>
-	<br/>
-	Для работы с репозиториями git (в том числе и с github), на windows, можно использовать различные средства (посредством: https, ssh или скачивая архивы).<br/>
-	<br/>
-	К таковым относятся:<br/>
-	-&nbsp;GUI Clients for git/github:&nbsp;GitHub for Windows,&nbsp;Git Extensions, SourceTree, git-cola, SmartGit, GitEye, etc [<a href="http://git-scm.com/downloads/guis">http://git-scm.com/downloads/guis</a>]<br/>
-	- console utils: git bash [<a href="https://msysgit.github.io/">https://msysgit.github.io/</a>], putty [<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a>]<br/>
-	<br/>
-	Рекомендуется использовать&nbsp;console utils&nbsp;- быстрее и интерфейс пользователя - единый - консоль.<br/>
-	<br/>
-	Git Bash входим в пакет&nbsp;msysgit, который может быть включён во множество программ - используется для эмуляции работы unix (posix совместимых систем) - на windows.<br/>
-	Например, msysgit входит в состав окружения для консольной программы: cmder.<br/>
-	<br/>
-	В состав cmder входят:<br/>
-	- ssh-agent<br/>
-	- ssh-keygen<br/>
-	- git bash<br/>
-	<br/>
-	-----------------------------<br/>
-	<div style="text-align: left;">
-		Для того, чтобы подключиться к github репозиторию нам нужно сгенерировать ключи: публичный и приватный.
-	</div>
-	Публичный мы добавим в настройках подключения github. А приватный добавим в ssh-agent (в окружении&nbsp;msysgit).<br/>
-	<br/>
-	-----------------------------<br/>
+<h2 style="text-align: left;"><a href="/">romanitalian notes</a> / <b>Посредством чего работать с git/github:</b></h2>
+<div>
+    <p>Для работы с репозиториями git (в том числе и с github), на windows, можно использовать различные средства (посредством: https, ssh или скачивая архивы).</p>
+    <p>К таковым относятся:</p>
+    <ul>
+        <li>&nbsp;GUI Clients for git/github:&nbsp;GitHub for Windows,&nbsp;Git Extensions, SourceTree, git-cola, SmartGit, GitEye, etc [<a href="http://git-scm.com/downloads/guis">http://git-scm.com/downloads/guis</a>]</li>
+        <li>console utils: git bash [<a href="https://msysgit.github.io/">https://msysgit.github.io/</a>], putty [<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a>]</li>
+    </ul>
+    <p>Рекомендуется использовать&nbsp;console utils&nbsp;- быстрее и интерфейс пользователя - единый - консоль.</p>
+    <p>Git Bash входим в пакет&nbsp;msysgit, который может быть включён во множество программ - используется для эмуляции работы unix (posix совместимых систем) - на windows.</p>
+    <p>Например, msysgit входит в состав окружения для консольной программы: cmder.</p>
+    <br/>
+    В состав cmder входят:<br/>
+    - ssh-agent<br/>
+    - ssh-keygen<br/>
+    - git bash<br/>
+    <br/>
+    -----------------------------<br/>
+    <div style="text-align: left;">
+        Для того, чтобы подключиться к github репозиторию нам нужно сгенерировать ключи: публичный и приватный.
+    </div>
+    Публичный мы добавим в настройках подключения github. А приватный добавим в ssh-agent (в окружении&nbsp;msysgit).<br/>
+    <br/>
+    -----------------------------<br/>
 
-	<h2 style="text-align: left;">
-		<b>Как:</b></h2>
+    <h2 style="text-align: left;">
+        <b>Как:</b></h2>
 
-	<h3 style="text-align: left;">
-		<b>-- 1 -- Создаём каталог для ключей</b></h3>
-	1. Устанавливем cmder [<a href="http://gooseberrycreative.com/cmder/">http://gooseberrycreative.com/cmder/</a>]<br/>
-	2. Заходим в cmder в домашний каталог пользователя (или любой другой, где собираетесь хранить ssh ключи). Например:&nbsp;C:\Users\%USERNAME%<br/>
-	3. Создаём каталог: ".ssh"<br/>
+    <h3 style="text-align: left;">
+        <b>-- 1 -- Создаём каталог для ключей</b></h3>
+    1. Устанавливем cmder [<a href="http://gooseberrycreative.com/cmder/">http://gooseberrycreative.com/cmder/</a>]<br/>
+    2. Заходим в cmder в домашний каталог пользователя (или любой другой, где собираетесь хранить ssh ключи). Например:&nbsp;C:\Users\%USERNAME%<br/>
+    3. Создаём каталог: ".ssh"<br/>
 
-	<h3 style="text-align: left;">
-		<b>-- 2 --&nbsp;</b><b>Создание ssh ключей</b></h3>
-	<br/>
-	4. В консоли cmder исполняем следующие команды:<br/>
-	-&nbsp;<b>[</b><b>ssh-keygen -t rsa -C "you@gmail.com"</b><b>]</b>. После этого в текущем каталоге будут созданы ключи. (you@gmail.com - заменить на Ваш email).<br/>
-	-&nbsp;<b>[</b><b>ssh -T git@github.com</b><b>]</b>&nbsp;- проверка подключения к gihub посредством ssh-agent.<br/>
-	<br/>
-	<br/>
+    <h3 style="text-align: left;">
+        <b>-- 2 --&nbsp;</b><b>Создание ssh ключей</b></h3>
+    <br/>
+    4. В консоли cmder исполняем следующие команды:<br/>
+    -&nbsp;<b>[</b><b>ssh-keygen -t rsa -C "you@gmail.com"</b><b>]</b>. После этого в текущем каталоге будут созданы ключи. (you@gmail.com - заменить на Ваш email).<br/>
+    -&nbsp;<b>[</b><b>ssh -T git@github.com</b><b>]</b>&nbsp;- проверка подключения к gihub посредством ssh-agent.<br/>
+    <br/>
+    <br/>
 
-	<h3 style="text-align: left;">
-		<b>-- 3 --&nbsp;</b><b>Добавление ssh ключей&nbsp;в ssh-agent&nbsp;</b></h3>
-	<div style="text-align: left;">
-		-&nbsp;<b>[</b><b>ssh-add id_rsa</b><b>]</b>&nbsp;- добавить приватный ключ в ssh-agent (в окружении&nbsp;msysgit). Здесь&nbsp;id_rsa - имя файла приватного ключа.
-	</div>
-	<br/>
+    <h3 style="text-align: left;">
+        <b>-- 3 --&nbsp;</b><b>Добавление ssh ключей&nbsp;в ssh-agent&nbsp;</b></h3>
+    <div style="text-align: left;">
+        -&nbsp;<b>[</b><b>ssh-add id_rsa</b><b>]</b>&nbsp;- добавить приватный ключ в ssh-agent (в окружении&nbsp;msysgit). Здесь&nbsp;id_rsa - имя файла приватного ключа.
+    </div>
+    <br/>
 
-	<h3 style="text-align: left;">
-		<b>-- 4 --&nbsp;</b><b>Добавление ssh ключей&nbsp;в Ваш аккаунт в репозиторий (github)</b></h3>
-	5.&nbsp;<b>[git config --global user.email "you.github@gmail.com"]</b>&nbsp;- добавим свой email (из аккаунта github)<br/>
-	6. В Ваших настройках на github заходим в&nbsp;<b>Settings - SSH keys: Add SSH key</b>.<br/>
-	Здесь:<br/>
-	- поле "Title" произвольно;<br/>
-	- поле "Key" - копируем содержимое файлы с публичным ключём (например: id_rsa.pub - открываем через любой блокнот - главное, чтобы файл назывался: *.pub).<br/>
-	<br/>
-	<br/>
-	Ваш клиент по работе с github настроен!<br/>
-	<br/>
-	Переходим в каталог, где предполагаем работать с github.<br/>
-	И делаем [git clone], [git add .], [git commit -am 'fix'], [git push origin], ...<br/>
-	<br/>
-	//&nbsp;@todo add sceenshots<br/>
-	<br/></div>
+    <h3 style="text-align: left;">
+        <b>-- 4 --&nbsp;</b><b>Добавление ssh ключей&nbsp;в Ваш аккаунт в репозиторий (github)</b></h3>
+    5.&nbsp;<b>[git config --global user.email "you.github@gmail.com"]</b>&nbsp;- добавим свой email (из аккаунта github)<br/>
+    6. В Ваших настройках на github заходим в&nbsp;<b>Settings - SSH keys: Add SSH key</b>.<br/>
+    Здесь:<br/>
+    - поле "Title" произвольно;<br/>
+    - поле "Key" - копируем содержимое файлы с публичным ключём (например: id_rsa.pub - открываем через любой блокнот - главное, чтобы файл назывался: *.pub).<br/>
+    <br/>
+    <br/>
+    Ваш клиент по работе с github настроен!<br/>
+    <br/>
+    Переходим в каталог, где предполагаем работать с github.<br/>
+    И делаем [git clone], [git add .], [git commit -am 'fix'], [git push origin], ...<br/>
+    <br/>
+    //&nbsp;@todo add sceenshots<br/>
+    <br/></div>
 
 <style>
-	.images ul {
-		list-style-type: none;
-	}
+    .images ul {
+        list-style-type: none;
+    }
 </style>
 <div class="images">
-	<ul>
-		<li><img src="/images/cmder_gihub/ssh_keygen_t_rsa_c_email.jpg" alt="Создание ssh ключей" title="Создание ssh ключей"/></li>
-		<li><img src="/images/cmder_gihub/ssh_t_git_github_com.jpg" alt="Проверка подключения к gihub посредством ssh-agent" title="Проверка подключения к gihub посредством ssh-agent"/></li>
-		<li><img src="/images/cmder_gihub/ssh_add_id_rsa.jpg" alt="Добавить приватный ключ в ssh-agent" title="Добавить приватный ключ в ssh-agent"/></li>
-	</ul>
+    <ul>
+        <li><img src="/images/cmder_gihub/ssh_keygen_t_rsa_c_email.jpg" alt="Создание ssh ключей" title="Создание ssh ключей"/></li>
+        <li><img src="/images/cmder_gihub/ssh_t_git_github_com.jpg" alt="Проверка подключения к gihub посредством ssh-agent" title="Проверка подключения к gihub посредством ssh-agent"/></li>
+        <li><img src="/images/cmder_gihub/ssh_add_id_rsa.jpg" alt="Добавить приватный ключ в ssh-agent" title="Добавить приватный ключ в ssh-agent"/></li>
+    </ul>
 </div>
 </body>
 </html>

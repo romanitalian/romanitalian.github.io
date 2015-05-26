@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Использование private метода в PHP - "извне"</title>
+
+    <style type="text/css">
+        span {
+            font-family: 'Consolas';
+            font-size: 10pt;
+            color: #DCDCCC;
+        }
+
+        .sc18 {
+            font-weight: bold;
+            color: #7F9F7F;
+        }
+
+        .sc104 {
+        }
+
+        .sc118 {
+        }
+
+        .sc119 {
+            color: #CC9393;
+        }
+
+        .sc120 {
+            color: #CC9393;
+        }
+
+        .sc121 {
+            font-weight: bold;
+            color: #DFC47D;
+        }
+
+        .sc123 {
+            font-weight: bold;
+            color: #CEDF99;
+        }
+
+        .sc125 {
+            color: #7F9F7F;
+        }
+
+        .sc127 {
+            font-weight: bold;
+            color: #9F9D6D;
+        }
+
+        .box {
+            white-space: pre;
+            line-height: 1;
+            background: #3F3F3F;
+            padding: 15px;
+        }
+
+        .row {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<h2 style="text-align: left;"><a href="/">romanitalian notes</a> / <b>Использование private метода в PHP - "извне"</b></h2>
+<p>В PHP нет способа вызвать "извне" метод объекта или класса с модификатором доступа "private". Но есть несколько не очень красивых, но рабочих способа обойти эти ограничения.</p>
+<p>Возможные случаи практического применения, на рабочих проектах, этих подходов - единицы:</p>
+<ul>
+    <li>для тестирования</li>
+    <li>на собеседовнии</li>
+</ul>
+<p>Вот эти несколько вариантов использования:</p>
+<p>-----------------------</p>
+<p>Вариант 1:</p>
+<p>source: http://php.net/manual/ru/closure.bindto.php</p>
+<div class="box row"><span class="sc18">&lt;?php</span><span class="sc118">
+
+</span><span class="sc125">// (PHP 5 &gt;= 5.4.0)</span><span class="sc118">
+
+trait DynamicDefinition </span><span class="sc127">{</span><span class="sc118">
+
+    </span><span class="sc121">public</span><span class="sc118"> </span><span class="sc121">function</span><span class="sc118"> __call</span><span class="sc127">(</span><span class="sc123">$name</span><span class="sc127">,</span><span class="sc118"> </span><span class="sc123">$args</span><span
+        class="sc127">)</span><span class="sc118"> </span><span class="sc127">{</span><span class="sc118">
+        </span><span class="sc121">if</span><span class="sc118"> </span><span class="sc127">(</span><span class="sc118">is_callable</span><span class="sc127">(</span><span class="sc123">$this</span><span class="sc127">-&gt;</span><span class="sc123">$name</span><span class="sc127">))</span><span
+        class="sc118"> </span><span class="sc127">{</span><span class="sc118">
+            </span><span class="sc121">return</span><span class="sc118"> call_user_func</span><span class="sc127">(</span><span class="sc123">$this</span><span class="sc127">-&gt;</span><span class="sc123">$name</span><span class="sc127">,</span><span class="sc118"> </span><span class="sc123">$args</span><span
+        class="sc127">);</span><span class="sc118">
+        </span><span class="sc127">}</span><span class="sc118">
+        </span><span class="sc121">else</span><span class="sc118"> </span><span class="sc127">{</span><span class="sc118">
+            </span><span class="sc121">throw</span><span class="sc118"> </span><span class="sc121">new</span><span class="sc118"> \RuntimeException</span><span class="sc127">(</span><span class="sc119">"Method </span><span class="sc104">{$name}</span><span class="sc119"> does not exist"</span><span
+        class="sc127">);</span><span class="sc118">
+        </span><span class="sc127">}</span><span class="sc118">
+    </span><span class="sc127">}</span><span class="sc118">
+
+    </span><span class="sc121">public</span><span class="sc118"> </span><span class="sc121">function</span><span class="sc118"> __set</span><span class="sc127">(</span><span class="sc123">$name</span><span class="sc127">,</span><span class="sc118"> </span><span class="sc123">$value</span><span
+        class="sc127">)</span><span class="sc118"> </span><span class="sc127">{</span><span class="sc118">
+        </span><span class="sc123">$this</span><span class="sc127">-&gt;</span><span class="sc123">$name</span><span class="sc118"> </span><span class="sc127">=</span><span class="sc118"> is_callable</span><span class="sc127">(</span><span class="sc123">$value</span><span class="sc127">)?</span><span class="sc118">
+            </span><span class="sc123">$value</span><span class="sc127">-&gt;</span><span class="sc118">bindTo</span><span class="sc127">(</span><span class="sc123">$this</span><span class="sc127">,</span><span class="sc118"> </span><span class="sc123">$this</span><span class="sc127">):</span><span class="sc118">
+            </span><span class="sc123">$value</span><span class="sc127">;</span><span class="sc118">
+    </span><span class="sc127">}</span><span class="sc118">
+</span><span class="sc127">}</span><span class="sc118">
+
+</span><span class="sc121">class</span><span class="sc118"> Foo </span><span class="sc127">{</span><span class="sc118">
+    </span><span class="sc121">use</span><span class="sc118"> DynamicDefinition</span><span class="sc127">;</span><span class="sc118">
+    </span><span class="sc121">private</span><span class="sc118"> </span><span class="sc123">$privateValue</span><span class="sc118"> </span><span class="sc127">=</span><span class="sc118"> </span><span class="sc120">'I am private'</span><span class="sc127">;</span><span class="sc118">
+</span><span class="sc127">}</span><span class="sc118">
+
+</span><span class="sc123">$foo</span><span class="sc118"> </span><span class="sc127">=</span><span class="sc118"> </span><span class="sc121">new</span><span class="sc118"> Foo</span><span class="sc127">;</span><span class="sc118">
+</span><span class="sc123">$foo</span><span class="sc127">-&gt;</span><span class="sc118">bar </span><span class="sc127">=</span><span class="sc118"> </span><span class="sc121">function</span><span class="sc127">()</span><span class="sc118"> </span><span class="sc127">{</span><span class="sc118">
+    </span><span class="sc121">return</span><span class="sc118"> </span><span class="sc123">$this</span><span class="sc127">-&gt;</span><span class="sc118">privateValue</span><span class="sc127">;</span><span class="sc118">
+</span><span class="sc127">};</span><span class="sc118">
+
+</span><span class="sc125">// prints 'I am private'</span>
+</div>
+
+<p>Вариант 2:</p>
+<p>source: http://rmcreative.ru/blog/post/vyzvat-private-metod-klassa-v-php</p>
+<div class="box row">
+    <span class="sc121">print</span><span class="sc118"> </span><span class="sc123">$foo</span><span class="sc127">-&gt;</span><span class="sc118">bar</span><span class="sc127">();</span><span class="sc118">
+</span><span class="sc121">function</span><span class="sc118"> callPrivateMethod</span><span class="sc127">(</span><span class="sc123">$object</span><span class="sc127">,</span><span class="sc118"> </span><span class="sc123">$method</span><span class="sc127">,</span><span class="sc118"> </span><span
+        class="sc123">$args</span><span class="sc127">)</span><span class="sc118">
+</span><span class="sc127">{</span><span class="sc118">
+    </span><span class="sc123">$classReflection</span><span class="sc118"> </span><span class="sc127">=</span><span class="sc118"> </span><span class="sc121">new</span><span class="sc118"> \ReflectionClass</span><span class="sc127">(</span><span class="sc118">get_class</span><span class="sc127">(</span><span
+        class="sc123">$myClass</span><span class="sc127">));</span><span class="sc118">
+    </span><span class="sc123">$methodReflection</span><span class="sc118"> </span><span class="sc127">=</span><span class="sc118"> </span><span class="sc123">$classReflection</span><span class="sc127">-&gt;</span><span class="sc118">getMethod</span><span class="sc127">(</span><span class="sc123">$method</span><span
+        class="sc127">);</span><span class="sc118">
+    </span><span class="sc123">$methodReflection</span><span class="sc127">-&gt;</span><span class="sc118">setAccessible</span><span class="sc127">(</span><span class="sc121">true</span><span class="sc127">);</span><span class="sc118">
+    </span><span class="sc123">$result</span><span class="sc118"> </span><span class="sc127">=</span><span class="sc118"> </span><span class="sc123">$methodReflection</span><span class="sc127">-&gt;</span><span class="sc118">invokeArgs</span><span class="sc127">(</span><span class="sc123">$object</span><span
+        class="sc127">,</span><span class="sc118"> </span><span class="sc123">$args</span><span class="sc127">);</span><span class="sc118">
+    </span><span class="sc123">$methodReflection</span><span class="sc127">-&gt;</span><span class="sc118">setAccessible</span><span class="sc127">(</span><span class="sc121">false</span><span class="sc127">);</span><span class="sc118">
+</span><span class="sc127">}</span><span class="sc118">
+
+</span><span class="sc123">$myObject</span><span class="sc118"> </span><span class="sc127">=</span><span class="sc118"> </span><span class="sc121">new</span><span class="sc118"> MyClass</span><span class="sc127">();</span><span class="sc118">
+callPrivateMethod</span><span class="sc127">(</span><span class="sc123">$myObject</span><span class="sc127">,</span><span class="sc118"> </span><span class="sc120">'hello'</span><span class="sc127">,</span><span class="sc118"> </span><span class="sc127">[</span><span class="sc120">'world'</span><span
+        class="sc127">]);</span><span class="sc118">
+</span>
+</div>
+
+<p>Вариант 1:</p>
+<p>source: http://3v4l.org/abZ3Y</p>
+<div class="box row">
+
+    <span class="sc121">class</span><span class="sc118"> Foo </span><span class="sc127">{</span><span class="sc118">
+     </span><span class="sc121">private</span><span class="sc118"> </span><span class="sc123">$secretProperty</span><span class="sc118"> </span><span class="sc127">=</span><span class="sc118"> </span><span class="sc119">"Hello"</span><span class="sc127">;</span><span class="sc118">
+     </span><span class="sc121">private</span><span class="sc118"> </span><span class="sc121">function</span><span class="sc118"> secretMethod</span><span class="sc127">()</span><span class="sc118">
+     </span><span class="sc127">{</span><span class="sc118">
+         </span><span class="sc121">return</span><span class="sc118"> </span><span class="sc120">'World'</span><span class="sc127">;</span><span class="sc118">
+     </span><span class="sc127">}</span><span class="sc118">
+</span><span class="sc127">}</span><span class="sc118">
+
+</span><span class="sc123">$privatePropertyAccessor</span><span class="sc118"> </span><span class="sc127">=</span><span class="sc118"> </span><span class="sc121">function</span><span class="sc127">(</span><span class="sc123">$prop</span><span class="sc127">)</span><span class="sc118"> </span><span
+        class="sc127">{</span><span class="sc118"> </span><span class="sc121">return</span><span class="sc118"> </span><span class="sc123">$this</span><span class="sc127">-&gt;</span><span class="sc123">$prop</span><span class="sc127">;</span><span class="sc118"> </span><span class="sc127">};</span><span class="sc118">
+
+</span><span class="sc123">$privateMethodAccessor</span><span class="sc118"> </span><span class="sc127">=</span><span class="sc118"> </span><span class="sc121">function</span><span class="sc127">(</span><span class="sc123">$method</span><span class="sc127">)</span><span class="sc118"> </span><span
+        class="sc127">{</span><span class="sc118"> </span><span class="sc121">return</span><span class="sc118"> </span><span class="sc127">[</span><span class="sc123">$this</span><span class="sc127">,</span><span class="sc118"> </span><span class="sc123">$method</span><span class="sc127">]();</span><span
+        class="sc118"> </span><span class="sc127">};</span><span class="sc118">
+
+</span><span class="sc123">$foo</span><span class="sc118"> </span><span class="sc127">=</span><span class="sc118"> </span><span class="sc121">new</span><span class="sc118"> Foo</span><span class="sc127">();</span><span class="sc118">
+
+</span><span class="sc121">echo</span><span class="sc118"> </span><span class="sc123">$privatePropertyAccessor</span><span class="sc127">-&gt;</span><span class="sc118">call</span><span class="sc127">(</span><span class="sc123">$foo</span><span class="sc127">,</span><span class="sc118"> </span><span class="sc120">'secretProperty'</span><span
+        class="sc127">);</span><span class="sc118"> </span><span class="sc125">// Hello</span><span class="sc118">
+</span><span class="sc121">echo</span><span class="sc118"> </span><span class="sc123">$privateMethodAccessor</span><span class="sc127">-&gt;</span><span class="sc118">call</span><span class="sc127">(</span><span class="sc123">$foo</span><span class="sc127">,</span><span class="sc118"> </span><span class="sc120">'secretMethod'</span><span
+        class="sc127">);</span><span class="sc118"> </span><span class="sc125">// World</span></div>
+<!--EndFragment-->
+
+
+</body>
+</html>
