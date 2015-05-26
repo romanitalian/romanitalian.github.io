@@ -73,12 +73,10 @@
 <p>-----------------------</p>
 <p>Вариант 1:</p>
 <p>source: <a href="http://php.net/manual/ru/closure.bindto.php">http://php.net/manual/ru/closure.bindto.php</a></p>
-<div class="box row"><span class="sc18">&lt;?php</span><span class="sc118">
-
-</span><span class="sc125">// (PHP 5 &gt;= 5.4.0)</span><span class="sc118">
-
-trait DynamicDefinition </span><span class="sc127">{</span><span class="sc118">
-
+<div class="box row"><span class="sc18">&lt;?php</span>
+    <span class="sc118"></span>
+    <span class="sc125">// (PHP 5 &gt;= 5.4.0)</span><span class="sc118">trait DynamicDefinition </span><span class="sc127">{</span>
+    <span class="sc118">
     </span><span class="sc121">public</span><span class="sc118"> </span><span class="sc121">function</span><span class="sc118"> __call</span><span class="sc127">(</span><span class="sc123">$name</span><span class="sc127">,</span><span class="sc118"> </span><span class="sc123">$args</span><span
         class="sc127">)</span><span class="sc118"> </span><span class="sc127">{</span><span class="sc118">
         </span><span class="sc121">if</span><span class="sc118"> </span><span class="sc127">(</span><span class="sc118">is_callable</span><span class="sc127">(</span><span class="sc123">$this</span><span class="sc127">-&gt;</span><span class="sc123">$name</span><span class="sc127">))</span><span
