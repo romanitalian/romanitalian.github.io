@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="file_template.xslt" type="text/xsl"?><!-- путь до xslt стилей указан в аттрибуте href -->
+<data>
+    <title>Владелец и его собаки</title>
+    <owner>Владелец</owner>
+    <my_test>
+        <first>Имя</first>
+        <second>Фамилия</second>
+        <second>Ла-ла-ла</second>
+    </my_test>
+    <animals>
+        <title>Собаки</title>
+        <dogs>
+            <dog>
+                <dogName>Шарик</dogName>
+                <dogWeight caption="кг">18</dogWeight>
+                <dogColor>рыжий с черными подпалинами</dogColor>
+            </dog>
+            <dog>
+                <dogName>Тузик</dogName>
+                <dogWeight caption="кг">10</dogWeight>
+                <dogColor>белый с черными пятнами</dogColor>
+            </dog>
+            <dog>
+                <dogName>Бобик</dogName>
+                <dogWeight caption="кг">2</dogWeight>
+                <dogColor>бело-серый</dogColor>
+            </dog>
+            <dog>
+                <dogName>Трезор</dogName>
+                <dogWeight caption="кг">25</dogWeight>
+                <dogColor>черный</dogColor>
+            </dog>
+        </dogs>
+    </animals>
+</data>

@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>file_template.xslt</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style type="text/css">
+        .ln {
+            color: rgb(0, 0, 0);
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .s0 {
+            color: rgb(232, 191, 106);
+        }
+
+        .s1 {
+            color: rgb(186, 186, 186);
+        }
+
+        .s2 {
+            color: rgb(165, 194, 97);
+        }
+
+        .s3 {
+            color: rgb(169, 183, 198);
+        }
+
+        .s4 {
+            color: rgb(128, 128, 128);
+            font-style: italic;
+        }
+
+        .s5 {
+            color: rgb(109, 156, 190);
+        }
+    </style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0">
+    <TR>
+        <TD>
+            <CENTER>
+                <FONT FACE="Arial, Helvetica" COLOR="#000000">
+                    file_template.xslt</FONT>
+            </center>
+        </TD>
+    </TR>
+</TABLE>
+<pre>
+
+<span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s2">=&quot;1.0&quot;</span><span class="s0">?&gt;</span><span class="s3"> 
+</span><span class="s0">&lt;xsl:stylesheet </span><span class="s1">xmlns:xsl</span><span class="s2">=&quot;http://www.w3.org/1999/XSL/Transform&quot; </span><span class="s1">version</span><span class="s2">=&quot;1.0&quot;</span><span class="s0">&gt;</span><span class="s3"> 
+    </span><span class="s0">&lt;xsl:output </span><span class="s1">method</span><span class="s2">=&quot;html&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!-- вывести как html --&gt;</span><span class="s3"> 
+    </span><span class="s0">&lt;xsl:template </span><span class="s1">match</span><span class="s2">=&quot;/&quot;</span><span class="s0">&gt;</span><span class="s4">&lt;!-- из корня документа с данными --&gt;</span><span class="s3"> 
+        </span><span class="s0">&lt;html&gt;</span><span class="s3"> 
+            </span><span class="s0">&lt;head&gt;</span><span class="s3"> 
+                </span><span class="s0">&lt;title&gt;&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;/data/title&quot;</span><span class="s0">/&gt;&lt;/title&gt;</span><span class="s3"> 
+            </span><span class="s0">&lt;/head&gt;</span><span class="s3"> 
+            </span><span class="s0">&lt;body&gt;</span><span class="s3"> 
+                </span><span class="s0">&lt;b&gt;&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;/data/owner&quot;</span><span class="s0">/&gt;</span><span class="s3">:</span><span class="s0">&lt;/b&gt;</span><span class="s5">&amp;#160;</span><span class="s4">&lt;!-- вместо $nbsp; используем: &amp;#160; --&gt;</span><span
+        class="s3">
+                </span><span class="s0">&lt;xsl:for-each </span><span class="s1">select</span><span class="s2">=&quot;/data/my_test/*&quot;</span><span class="s0">&gt;</span><span class="s4">&lt;!-- цикл для каждого элемента из блока: /data/my_test/* --&gt;</span><span class="s3"> 
+                    </span><span class="s0">&lt;xsl:if </span><span class="s1">test</span><span class="s2">=&quot;position()!=1&quot; </span><span class="s1">xml:space</span><span class="s2">=&quot;preserve&quot;</span><span class="s0">&gt;</span><span class="s3">, </span><span class="s0">&lt;/xsl:if&gt;</span><span
+        class="s4">&lt;!-- проставить запятые строго между элементами (вне элементов не ставим - ни до, ни после) --&gt;</span><span class="s3">
+                    </span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;.&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!-- получить содержимое &quot;value-of&quot;, из узла с любым именем: select=&quot;.&quot; --&gt;</span><span class="s3"> 
+                </span><span class="s0">&lt;/xsl:for-each&gt;</span><span class="s3"> 
+ 
+                </span><span class="s0">&lt;table </span><span class="s1">border</span><span class="s2">=&quot;1&quot;</span><span class="s0">&gt;</span><span class="s3"> 
+                    </span><span class="s0">&lt;b&gt;&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;/data/animals/title&quot;</span><span class="s0">/&gt;</span><span class="s3">:</span><span class="s0">&lt;/b&gt;</span><span class="s3"> 
+                    </span><span class="s0">&lt;xsl:for-each </span><span class="s1">select</span><span class="s2">=&quot;/data/animals/dogs/dog&quot;</span><span class="s0">&gt;</span><span class="s4">&lt;!-- цикл для каждого элемента из блока: /data/animals/dogs/dog --&gt;</span><span class="s3"> 
+                        </span><span class="s0">&lt;tr&gt;</span><span class="s3"> 
+                            </span><span class="s0">&lt;td&gt;</span><span class="s3"> 
+                                </span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogName&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!-- получить содержимое &quot;value-of&quot;, из узла с именем: dogName --&gt;</span><span class="s3"> 
+                            </span><span class="s0">&lt;/td&gt;</span><span class="s3"> 
+                            </span><span class="s0">&lt;td&gt;</span><span class="s3"> 
+                                </span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogWeight&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!-- получить содержимое &quot;value-of&quot;, из узла с именем: dogWeight --&gt;</span><span class="s3"> 
+                                </span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogWeight/@caption&quot;</span><span class="s0">/&gt;</span><span
+        class="s4">&lt;!-- получить содержимое &quot;value-of&quot;, из узла с именем: dogWeight и аттрибутом: caption --&gt;</span><span class="s3">
+                            </span><span class="s0">&lt;/td&gt;</span><span class="s3"> 
+                            </span><span class="s0">&lt;td&gt;</span><span class="s3"> 
+                                </span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogColor&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!-- получить содержимое &quot;value-of&quot;, из узла с именем: dogColor --&gt;</span><span class="s3"> 
+                            </span><span class="s0">&lt;/td&gt;</span><span class="s3"> 
+                        </span><span class="s0">&lt;/tr&gt;</span><span class="s3"> 
+                    </span><span class="s0">&lt;/xsl:for-each&gt;</span><span class="s3"> 
+                </span><span class="s0">&lt;/table&gt;</span><span class="s3"> 
+            </span><span class="s0">&lt;/body&gt;</span><span class="s3"> 
+        </span><span class="s0">&lt;/html&gt;</span><span class="s3"> 
+    </span><span class="s0">&lt;/xsl:template&gt;</span><span class="s3"> 
+</span><span class="s0">&lt;/xsl:stylesheet&gt;</span></pre>
+</body>
+</html>
