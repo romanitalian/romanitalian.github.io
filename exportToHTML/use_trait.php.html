@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>use_trait.php</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style type="text/css">
+        .ln {
+            color: rgb(0, 0, 0);
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .s0 {
+            color: rgb(204, 120, 50);
+            font-weight: bold;
+        }
+
+        .s1 {
+            color: rgb(169, 183, 198);
+        }
+
+        .s2 {
+            color: rgb(152, 118, 170);
+        }
+
+        .s3 {
+            color: rgb(204, 120, 50);
+        }
+
+        .s4 {
+            color: rgb(106, 135, 89);
+        }
+
+        .s5 {
+            color: rgb(128, 128, 128);
+        }
+    </style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0">
+    <TR>
+        <TD>
+            <CENTER>
+                <FONT FACE="Arial, Helvetica" COLOR="#000000">
+                    use_trait.php</FONT>
+            </center>
+        </TD>
+    </TR>
+</TABLE>
+<pre>
+
+<span class="s0">&lt;?php</span><span class="s1"><hr> 
+ 
+</span><span class="s0">trait </span><span class="s1">DynamicDefinition 
+{ 
+ 
+    </span><span class="s0">public function </span><span class="s1">__call(</span><span class="s2">$name</span><span class="s3">, </span><span class="s2">$args</span><span class="s1">) { 
+        </span><span class="s0">if</span><span class="s1">(is_callable(</span><span class="s2">$this</span><span class="s1">-&gt;</span><span class="s2">$name</span><span class="s1">)) { 
+            </span><span class="s0">return </span><span class="s1">call_user_func(</span><span class="s2">$this</span><span class="s1">-&gt;</span><span class="s2">$name</span><span class="s3">, </span><span class="s2">$args</span><span class="s1">)</span><span class="s3">;</span><span class="s1"> 
+        } </span><span class="s0">else </span><span class="s1">{ 
+            </span><span class="s0">throw new </span><span class="s1">\RuntimeException(</span><span class="s4">&quot;Method </span><span class="s1">{</span><span class="s2">$name</span><span class="s1">}</span><span class="s4"> does not exist&quot;</span><span class="s1">)</span><span class="s3">;</span><span
+        class="s1">
+        } 
+    } 
+ 
+    </span><span class="s0">public function </span><span class="s1">__set(</span><span class="s2">$name</span><span class="s3">, </span><span class="s2">$value</span><span class="s1">) { 
+        </span><span class="s2">$this</span><span class="s1">-&gt;</span><span class="s2">$name </span><span class="s1">= is_callable(</span><span class="s2">$value</span><span class="s1">) ? 
+            </span><span class="s2">$value</span><span class="s1">-&gt;bindTo(</span><span class="s2">$this</span><span class="s3">, </span><span class="s2">$this</span><span class="s1">) : 
+            </span><span class="s2">$value</span><span class="s3">;</span><span class="s1"> 
+    } 
+}<hr> 
+ 
+</span><span class="s0">class </span><span class="s1">Foo 
+{ 
+    </span><span class="s0">use </span><span class="s1">DynamicDefinition</span><span class="s3">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s2">$privateValue </span><span class="s1">= </span><span class="s4">'I am private'</span><span class="s3">;</span><span class="s1"> 
+} 
+ 
+</span><span class="s2">$foo </span><span class="s1">= </span><span class="s0">new </span><span class="s1">Foo</span><span class="s3">;</span><span class="s1"> 
+</span><span class="s2">$foo</span><span class="s1">-&gt;bar = </span><span class="s0">function </span><span class="s1">() { 
+    </span><span class="s0">return </span><span class="s2">$this</span><span class="s1">-&gt;privateValue</span><span class="s3">;</span><span class="s1"> 
+}</span><span class="s3">;</span><span class="s1"> 
+ 
+var_dump(</span><span class="s2">$foo</span><span class="s1">-&gt;bar())</span><span class="s3">; </span><span class="s5">// 'I am private'</span><span class="s1"> 
+</span><span class="s0">?&gt;</span><span class="s1"> 
+&lt;</span><span class="s0">pre </span><span class="s1">class=</span><span class="s4">'xdebug-var-dump' </span><span class="s1">dir=</span><span class="s4">'ltr'</span><span class="s1">&gt;&lt;</span><span class="s0">small</span><span class="s1">&gt;string&lt;/</span><span class="s0">small</span><span class="s1">&gt; &lt;</span><span
+        class="s0">font </span><span class="s1">color=</span><span class="s4">'#cc0000'</span><span class="s1">&gt;'I am private'&lt;/</span><span class="s0">font</span><span class="s1">&gt; &lt;</span><span class="s0">i</span><span class="s1">&gt;(length=12)&lt;/</span><span class="s0">i</span><span class="s1">&gt;&lt;/</span><span
+        class="s0">pre</span><span class="s1">&gt;
+ 
+ 
+</span></pre>
+</body>
+</html>
