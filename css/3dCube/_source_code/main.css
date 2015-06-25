@@ -1,0 +1,87 @@
+body {
+    background-color: #CCCCCC;
+    font: 1em 'PT Sans', Tahoma, Arial;
+}
+
+#wrapper {
+    /* коммент */
+    margin: 80px;
+    perspective: 900px;
+    -webkit-perspective: 900px;
+    perspective: 900px;
+}
+
+#cube {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    /* точку вращения делаем в центре куда */
+    transform-origin: 50% 50% -150px;
+    -webkit-transform-origin: 50% 50% -150px;
+    -ms-transform-origin: 50% 50% -150px;
+    /* поварачиваем куб */
+    transform: rotate3d(1, 1, 1, 180deg);
+    -webkit-transform: rotate3d(1, 1, 1, 180deg);
+    -ms-transform: rotate3d(1, 1, 1, 180deg);
+    /* как распологать грани (не проецировать на элемента с #cube, а представить элементы в 3d) */
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+.side {
+    width: 300px;
+    height: 300px;
+    background: rgba(0, 0, 0, .3);
+    background: -moz-radial-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .5));
+    background: -ms-radial-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .5));
+    background: -o-radial-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .5));
+    background: -webkit-radial-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .5));
+    position: absolute;
+    border: 10px solid #ffffff;
+    border-radius: 10px;
+    font-size: 5em;
+    color: #fff;
+    line-height: 300px;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+    box-shadow: 0 0 6px rgba(0, 0, 0, .05);
+    /* точку вращения грани делаем в центре куба - она тоже должна вращаться около центра куба */
+    -webkit-transform-origin: 50% 50% -150px;
+    -moz-transform-origin: 50% 50% -150px;
+    -ms-transform-origin: 50% 50% -150px;
+    /* делаем стороны не прозрачными */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+}
+
+/* поворачиваем грани */
+#side2 {
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+}
+
+#side3 {
+    -webkit-transform: rotateY(-90deg);
+    -moz-transform: rotateY(-90deg);
+    -ms-transform: rotateY(-90deg);
+}
+
+#side4 {
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    -ms-transform: rotateX(90deg);
+}
+
+#side5 {
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    -ms-transform: rotateX(-90deg);
+}
+
+#side6 {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+}
