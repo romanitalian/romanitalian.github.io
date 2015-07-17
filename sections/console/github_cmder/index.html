@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Как в cmder клонировать репозиторий github и залить изменения в remote/origin (os: windows)</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <style>
+        img {
+            display: block;
+            padding-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 <h1 style="text-align: left;"><a href="/">romanitalian notes</a> / <b>Как в cmder клонировать репозиторий github и залить изменения в remote/origin (os: windows)</b></h1>
@@ -46,7 +52,9 @@
     <br/>
     4. В консоли cmder исполняем следующие команды:<br/>
     -&nbsp;<b>[</b><b>ssh-keygen -t rsa -C "you@gmail.com"</b><b>]</b>. После этого в текущем каталоге будут созданы ключи. (you@gmail.com - заменить на Ваш email).<br/>
+    <img src="/images/cmder_gihub/ssh_keygen_t_rsa_c_email.jpg" alt="Создание ssh ключей" title="Создание ssh ключей"/>
     -&nbsp;<b>[</b><b>ssh -T git@github.com</b><b>]</b>&nbsp;- проверка подключения к gihub посредством ssh-agent.<br/>
+    <img src="/images/cmder_gihub/ssh_t_git_github_com.jpg" alt="Проверка подключения к gihub посредством ssh-agent" title="Проверка подключения к gihub посредством ssh-agent"/>
     <br/>
     <br/>
 
@@ -54,6 +62,7 @@
         <b>-- 3 --&nbsp;</b><b>Добавление ssh ключей&nbsp;в ssh-agent&nbsp;</b></h3>
     <div style="text-align: left;">
         -&nbsp;<b>[</b><b>ssh-add id_rsa</b><b>]</b>&nbsp;- добавить приватный ключ в ssh-agent (в окружении&nbsp;msysgit). Здесь&nbsp;id_rsa - имя файла приватного ключа.
+        <img src="/images/cmder_gihub/ssh_add_id_rsa.jpg" alt="Добавить приватный ключ в ssh-agent" title="Добавить приватный ключ в ssh-agent"/>
     </div>
     <br/>
 
@@ -73,19 +82,6 @@
     <br/>
     //&nbsp;@todo add sceenshots<br/>
     <br/></div>
-
-<style>
-    .images ul {
-        list-style-type: none;
-    }
-</style>
-<div class="images">
-    <ul>
-        <li><img src="/images/cmder_gihub/ssh_keygen_t_rsa_c_email.jpg" alt="Создание ssh ключей" title="Создание ssh ключей"/></li>
-        <li><img src="/images/cmder_gihub/ssh_t_git_github_com.jpg" alt="Проверка подключения к gihub посредством ssh-agent" title="Проверка подключения к gihub посредством ssh-agent"/></li>
-        <li><img src="/images/cmder_gihub/ssh_add_id_rsa.jpg" alt="Добавить приватный ключ в ssh-agent" title="Добавить приватный ключ в ssh-agent"/></li>
-    </ul>
-</div>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">

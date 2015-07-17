@@ -1,31 +1,28 @@
+body {
+    font-family: "Courier", "Tahoma";
+    color: #696969;
+}
 ul.rows {
     list-style-type: none;
 }
-
 ul > li {
     padding-bottom: 5px;
 }
-
 h1 {
     font-size: 1.5em;
 }
-
 h2 {
     font-size: 1.125em;
 }
-
 h3 {
     font-size: 0.8775em;
 }
-
 h4 {
     font-size: 0.84em;
 }
-
 h5 {
     font-size: 0.6225em;
 }
-
 h6 {
     font-size: 0.5625em;
 }
