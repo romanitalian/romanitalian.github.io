@@ -38,7 +38,7 @@
     </style>
 </head>
 <body>
-<h2 style="text-align: left;"><a href="/">romanitalian notes</a> / <b>Использование private метода в PHP - "извне"</b></h2>
+<h1 style="text-align: left;"><a href="/">romanitalian notes</a> / <b>Использование private метода в PHP - "извне"</b></h1>
 <p>В PHP нет способа вызвать "извне" метод объекта или класса с модификатором доступа "private". Но есть несколько не очень красивых, но рабочих способа обойти эти ограничения.</p>
 <p>Возможные случаи практического применения, на рабочих проектах, этих подходов - единицы.</p>
 <p>А также:</p>
@@ -98,6 +98,8 @@ var_dump(</span><span class="s2">$foo</span><span class="s1">-&gt;bar())</span><
 </span></pre>
     <br/>
 </div>
+
+
 <pre class='xdebug-var-dump' dir='ltr'><small>string</small> <font color='#cc0000'>'I am private'</font> <i>(length=12)</i></pre>
 
 <br/>

@@ -39,112 +39,114 @@
     </style>
 </head>
 <body>
-<h2 style="text-align: left;"><a href="/">romanitalian notes</a> / <b>How to use xslt</b></h2>
-<div style="background-color: #2b2b2b; ">
-    <!--<BODY BGCOLOR="#2b2b2b">-->
-    <TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0">
-        <TR>
-            <TD>
-                <CENTER>
-                    <FONT FACE="Arial, Helvetica" COLOR="#000000">
-                        file.xml</FONT>
-                </center>
-            </TD>
-        </TR>
-    </TABLE>
-<pre>
+<h1 style="text-align: left;"><a href="/">romanitalian notes</a> / <b>How to use xslt</b></h1>
+<!--<div style="background-color: #2b2b2b; ">-->
+    <!--&lt;!&ndash;<BODY BGCOLOR="#2b2b2b">&ndash;&gt;-->
+    <!--<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0">-->
+        <!--<TR>-->
+            <!--<TD>-->
+                <!--<CENTER>-->
+                    <!--<FONT FACE="Arial, Helvetica" COLOR="#000000">-->
+                        <!--file.xml</FONT>-->
+                <!--</center>-->
+            <!--</TD>-->
+        <!--</TR>-->
+    <!--</TABLE>-->
+<!--<pre>-->
 
-<span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s2">=&quot;1.0&quot;</span><span class="s0">?&gt;</span><span class="s3">
-</span><span class="s0">&lt;?</span><span class="s1">xml-stylesheet </span><span class="s2">href=&quot;file_template.xslt&quot; type=&quot;text/xsl&quot;</span><span class="s0">?&gt;</span><span class="s4">&lt;!-- путь до xslt стилей указан в аттрибуте href --&gt;</span><span class="s3">
-</span><span class="s0">&lt;data&gt;</span><span class="s3">
-    </span><span class="s0">&lt;title&gt;</span><span class="s3">Владелец и его собаки</span><span class="s0">&lt;/title&gt;</span><span class="s3">
-    </span><span class="s0">&lt;owner&gt;</span><span class="s3">Владелец</span><span class="s0">&lt;/owner&gt;</span><span class="s3">
-    </span><span class="s0">&lt;my_test&gt;</span><span class="s3">
-        </span><span class="s0">&lt;first&gt;</span><span class="s3">Имя</span><span class="s0">&lt;/first&gt;</span><span class="s3">
-        </span><span class="s0">&lt;second&gt;</span><span class="s3">Фамилия</span><span class="s0">&lt;/second&gt;</span><span class="s3">
-        </span><span class="s0">&lt;second&gt;</span><span class="s3">Ла-ла-ла</span><span class="s0">&lt;/second&gt;</span><span class="s3">
-    </span><span class="s0">&lt;/my_test&gt;</span><span class="s3">
-    </span><span class="s0">&lt;animals&gt;</span><span class="s3">
-        </span><span class="s0">&lt;title&gt;</span><span class="s3">Собаки</span><span class="s0">&lt;/title&gt;</span><span class="s3">
-        </span><span class="s0">&lt;dogs&gt;</span><span class="s3">
-            </span><span class="s0">&lt;dog&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogName&gt;</span><span class="s3">Шарик</span><span class="s0">&lt;/dogName&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogWeight </span><span class="s1">caption</span><span class="s2">=&quot;кг&quot;</span><span class="s0">&gt;</span><span class="s3">18</span><span class="s0">&lt;/dogWeight&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogColor&gt;</span><span class="s3">рыжий с черными подпалинами</span><span class="s0">&lt;/dogColor&gt;</span><span class="s3">
-            </span><span class="s0">&lt;/dog&gt;</span><span class="s3">
-            </span><span class="s0">&lt;dog&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogName&gt;</span><span class="s3">Тузик</span><span class="s0">&lt;/dogName&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogWeight </span><span class="s1">caption</span><span class="s2">=&quot;кг&quot;</span><span class="s0">&gt;</span><span class="s3">10</span><span class="s0">&lt;/dogWeight&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogColor&gt;</span><span class="s3">белый с черными пятнами</span><span class="s0">&lt;/dogColor&gt;</span><span class="s3">
-            </span><span class="s0">&lt;/dog&gt;</span><span class="s3">
-            </span><span class="s0">&lt;dog&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogName&gt;</span><span class="s3">Бобик</span><span class="s0">&lt;/dogName&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogWeight </span><span class="s1">caption</span><span class="s2">=&quot;кг&quot;</span><span class="s0">&gt;</span><span class="s3">2</span><span class="s0">&lt;/dogWeight&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogColor&gt;</span><span class="s3">бело-серый</span><span class="s0">&lt;/dogColor&gt;</span><span class="s3">
-            </span><span class="s0">&lt;/dog&gt;</span><span class="s3">
-            </span><span class="s0">&lt;dog&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogName&gt;</span><span class="s3">Трезор</span><span class="s0">&lt;/dogName&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogWeight </span><span class="s1">caption</span><span class="s2">=&quot;кг&quot;</span><span class="s0">&gt;</span><span class="s3">25</span><span class="s0">&lt;/dogWeight&gt;</span><span class="s3">
-                </span><span class="s0">&lt;dogColor&gt;</span><span class="s3">черный</span><span class="s0">&lt;/dogColor&gt;</span><span class="s3">
-            </span><span class="s0">&lt;/dog&gt;</span><span class="s3">
-        </span><span class="s0">&lt;/dogs&gt;</span><span class="s3">
-    </span><span class="s0">&lt;/animals&gt;</span><span class="s3">
-</span><span class="s0">&lt;/data&gt;</span></pre>
-</div>
+<!--<span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s2">=&quot;1.0&quot;</span><span class="s0">?&gt;</span><span class="s3">-->
+<!--</span><span class="s0">&lt;?</span><span class="s1">xml-stylesheet </span><span class="s2">href=&quot;file_template.xslt&quot; type=&quot;text/xsl&quot;</span><span class="s0">?&gt;</span><span class="s4">&lt;!&#45;&#45; путь до xslt стилей указан в аттрибуте href &#45;&#45;&gt;</span><span class="s3">-->
+<!--</span><span class="s0">&lt;data&gt;</span><span class="s3">-->
+    <!--</span><span class="s0">&lt;title&gt;</span><span class="s3">Владелец и его собаки</span><span class="s0">&lt;/title&gt;</span><span class="s3">-->
+    <!--</span><span class="s0">&lt;owner&gt;</span><span class="s3">Владелец</span><span class="s0">&lt;/owner&gt;</span><span class="s3">-->
+    <!--</span><span class="s0">&lt;my_test&gt;</span><span class="s3">-->
+        <!--</span><span class="s0">&lt;first&gt;</span><span class="s3">Имя</span><span class="s0">&lt;/first&gt;</span><span class="s3">-->
+        <!--</span><span class="s0">&lt;second&gt;</span><span class="s3">Фамилия</span><span class="s0">&lt;/second&gt;</span><span class="s3">-->
+        <!--</span><span class="s0">&lt;second&gt;</span><span class="s3">Ла-ла-ла</span><span class="s0">&lt;/second&gt;</span><span class="s3">-->
+    <!--</span><span class="s0">&lt;/my_test&gt;</span><span class="s3">-->
+    <!--</span><span class="s0">&lt;animals&gt;</span><span class="s3">-->
+        <!--</span><span class="s0">&lt;title&gt;</span><span class="s3">Собаки</span><span class="s0">&lt;/title&gt;</span><span class="s3">-->
+        <!--</span><span class="s0">&lt;dogs&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;dog&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogName&gt;</span><span class="s3">Шарик</span><span class="s0">&lt;/dogName&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogWeight </span><span class="s1">caption</span><span class="s2">=&quot;кг&quot;</span><span class="s0">&gt;</span><span class="s3">18</span><span class="s0">&lt;/dogWeight&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogColor&gt;</span><span class="s3">рыжий с черными подпалинами</span><span class="s0">&lt;/dogColor&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;/dog&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;dog&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogName&gt;</span><span class="s3">Тузик</span><span class="s0">&lt;/dogName&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogWeight </span><span class="s1">caption</span><span class="s2">=&quot;кг&quot;</span><span class="s0">&gt;</span><span class="s3">10</span><span class="s0">&lt;/dogWeight&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogColor&gt;</span><span class="s3">белый с черными пятнами</span><span class="s0">&lt;/dogColor&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;/dog&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;dog&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogName&gt;</span><span class="s3">Бобик</span><span class="s0">&lt;/dogName&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogWeight </span><span class="s1">caption</span><span class="s2">=&quot;кг&quot;</span><span class="s0">&gt;</span><span class="s3">2</span><span class="s0">&lt;/dogWeight&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogColor&gt;</span><span class="s3">бело-серый</span><span class="s0">&lt;/dogColor&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;/dog&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;dog&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogName&gt;</span><span class="s3">Трезор</span><span class="s0">&lt;/dogName&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogWeight </span><span class="s1">caption</span><span class="s2">=&quot;кг&quot;</span><span class="s0">&gt;</span><span class="s3">25</span><span class="s0">&lt;/dogWeight&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;dogColor&gt;</span><span class="s3">черный</span><span class="s0">&lt;/dogColor&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;/dog&gt;</span><span class="s3">-->
+        <!--</span><span class="s0">&lt;/dogs&gt;</span><span class="s3">-->
+    <!--</span><span class="s0">&lt;/animals&gt;</span><span class="s3">-->
+<!--</span><span class="s0">&lt;/data&gt;</span></pre>-->
+<!--</div>-->
 
-<div style="background-color: #2b2b2b; ">
-    <TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0">
-        <TR>
-            <TD>
-                <CENTER>
-                    <FONT FACE="Arial, Helvetica" COLOR="#000000">
-                        file_template.xslt</FONT>
-                </center>
-            </TD>
-        </TR>
-    </TABLE>
-<pre>
+<!--<div style="background-color: #2b2b2b; ">-->
+    <!--<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0">-->
+        <!--<TR>-->
+            <!--<TD>-->
+                <!--<CENTER>-->
+                    <!--<FONT FACE="Arial, Helvetica" COLOR="#000000">-->
+                        <!--file_template.xslt</FONT>-->
+                <!--</center>-->
+            <!--</TD>-->
+        <!--</TR>-->
+    <!--</TABLE>-->
+<!--<pre>-->
 
-<span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s2">=&quot;1.0&quot;</span><span class="s0">?&gt;</span><span class="s3">
-</span><span class="s0">&lt;xsl:stylesheet </span><span class="s1">xmlns:xsl</span><span class="s2">=&quot;http://www.w3.org/1999/XSL/Transform&quot; </span><span class="s1">version</span><span class="s2">=&quot;1.0&quot;</span><span class="s0">&gt;</span><span class="s3">
-    </span><span class="s0">&lt;xsl:output </span><span class="s1">method</span><span class="s2">=&quot;html&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!-- вывести как html --&gt;</span><span class="s3">
-    </span><span class="s0">&lt;xsl:template </span><span class="s1">match</span><span class="s2">=&quot;/&quot;</span><span class="s0">&gt;</span><span class="s4">&lt;!-- из корня документа с данными --&gt;</span><span class="s3">
-        </span><span class="s0">&lt;html&gt;</span><span class="s3">
-            </span><span class="s0">&lt;head&gt;</span><span class="s3">
-                </span><span class="s0">&lt;title&gt;&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;/data/title&quot;</span><span class="s0">/&gt;&lt;/title&gt;</span><span class="s3">
-            </span><span class="s0">&lt;/head&gt;</span><span class="s3">
-            </span><span class="s0">&lt;body&gt;</span><span class="s3">
-                </span><span class="s0">&lt;b&gt;&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;/data/owner&quot;</span><span class="s0">/&gt;</span><span class="s3">:</span><span class="s0">&lt;/b&gt;</span><span class="s5">&amp;#160;</span><span class="s4">&lt;!-- вместо $nbsp; используем: &amp;#160; --&gt;</span><span
-        class="s3">
-                </span><span class="s0">&lt;xsl:for-each </span><span class="s1">select</span><span class="s2">=&quot;/data/my_test/*&quot;</span><span class="s0">&gt;</span><span class="s4">&lt;!-- цикл для каждого элемента из блока: /data/my_test/* --&gt;</span><span class="s3">
-                    </span><span class="s0">&lt;xsl:if </span><span class="s1">test</span><span class="s2">=&quot;position()!=1&quot; </span><span class="s1">xml:space</span><span class="s2">=&quot;preserve&quot;</span><span class="s0">&gt;</span><span class="s3">, </span><span class="s0">&lt;/xsl:if&gt;</span><span
-        class="s4">&lt;!-- проставить запятые строго между элементами (вне элементов не ставим - ни до, ни после) --&gt;</span><span class="s3">
-                    </span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;.&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!-- получить содержимое &quot;value-of&quot;, из узла с любым именем: select=&quot;.&quot; --&gt;</span><span class="s3">
-                </span><span class="s0">&lt;/xsl:for-each&gt;</span><span class="s3">
+<!--<span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s2">=&quot;1.0&quot;</span><span class="s0">?&gt;</span><span class="s3">-->
+<!--</span><span class="s0">&lt;xsl:stylesheet </span><span class="s1">xmlns:xsl</span><span class="s2">=&quot;http://www.w3.org/1999/XSL/Transform&quot; </span><span class="s1">version</span><span class="s2">=&quot;1.0&quot;</span><span class="s0">&gt;</span><span class="s3">-->
+    <!--</span><span class="s0">&lt;xsl:output </span><span class="s1">method</span><span class="s2">=&quot;html&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!&#45;&#45; вывести как html &#45;&#45;&gt;</span><span class="s3">-->
+    <!--</span><span class="s0">&lt;xsl:template </span><span class="s1">match</span><span class="s2">=&quot;/&quot;</span><span class="s0">&gt;</span><span class="s4">&lt;!&#45;&#45; из корня документа с данными &#45;&#45;&gt;</span><span class="s3">-->
+        <!--</span><span class="s0">&lt;html&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;head&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;title&gt;&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;/data/title&quot;</span><span class="s0">/&gt;&lt;/title&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;/head&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;body&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;b&gt;&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;/data/owner&quot;</span><span class="s0">/&gt;</span><span class="s3">:</span><span class="s0">&lt;/b&gt;</span><span class="s5">&amp;#160;</span><span class="s4">&lt;!&#45;&#45; вместо $nbsp; используем: &amp;#160; &#45;&#45;&gt;</span><span-->
+        <!--class="s3">-->
+                <!--</span><span class="s0">&lt;xsl:for-each </span><span class="s1">select</span><span class="s2">=&quot;/data/my_test/*&quot;</span><span class="s0">&gt;</span><span class="s4">&lt;!&#45;&#45; цикл для каждого элемента из блока: /data/my_test/* &#45;&#45;&gt;</span><span class="s3">-->
+                    <!--</span><span class="s0">&lt;xsl:if </span><span class="s1">test</span><span class="s2">=&quot;position()!=1&quot; </span><span class="s1">xml:space</span><span class="s2">=&quot;preserve&quot;</span><span class="s0">&gt;</span><span class="s3">, </span><span class="s0">&lt;/xsl:if&gt;</span><span-->
+        <!--class="s4">&lt;!&#45;&#45; проставить запятые строго между элементами (вне элементов не ставим - ни до, ни после) &#45;&#45;&gt;</span><span class="s3">-->
+                    <!--</span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;.&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!&#45;&#45; получить содержимое &quot;value-of&quot;, из узла с любым именем: select=&quot;.&quot; &#45;&#45;&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;/xsl:for-each&gt;</span><span class="s3">-->
 
-                </span><span class="s0">&lt;table </span><span class="s1">border</span><span class="s2">=&quot;1&quot;</span><span class="s0">&gt;</span><span class="s3">
-                    </span><span class="s0">&lt;b&gt;&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;/data/animals/title&quot;</span><span class="s0">/&gt;</span><span class="s3">:</span><span class="s0">&lt;/b&gt;</span><span class="s3">
-                    </span><span class="s0">&lt;xsl:for-each </span><span class="s1">select</span><span class="s2">=&quot;/data/animals/dogs/dog&quot;</span><span class="s0">&gt;</span><span class="s4">&lt;!-- цикл для каждого элемента из блока: /data/animals/dogs/dog --&gt;</span><span class="s3">
-                        </span><span class="s0">&lt;tr&gt;</span><span class="s3">
-                            </span><span class="s0">&lt;td&gt;</span><span class="s3">
-                                </span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogName&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!-- получить содержимое &quot;value-of&quot;, из узла с именем: dogName --&gt;</span><span class="s3">
-                            </span><span class="s0">&lt;/td&gt;</span><span class="s3">
-                            </span><span class="s0">&lt;td&gt;</span><span class="s3">
-                                </span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogWeight&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!-- получить содержимое &quot;value-of&quot;, из узла с именем: dogWeight --&gt;</span><span class="s3">
-                                </span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogWeight/@caption&quot;</span><span class="s0">/&gt;</span><span
-        class="s4">&lt;!-- получить содержимое &quot;value-of&quot;, из узла с именем: dogWeight и аттрибутом: caption --&gt;</span><span class="s3">
-                            </span><span class="s0">&lt;/td&gt;</span><span class="s3">
-                            </span><span class="s0">&lt;td&gt;</span><span class="s3">
-                                </span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogColor&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!-- получить содержимое &quot;value-of&quot;, из узла с именем: dogColor --&gt;</span><span class="s3">
-                            </span><span class="s0">&lt;/td&gt;</span><span class="s3">
-                        </span><span class="s0">&lt;/tr&gt;</span><span class="s3">
-                    </span><span class="s0">&lt;/xsl:for-each&gt;</span><span class="s3">
-                </span><span class="s0">&lt;/table&gt;</span><span class="s3">
-            </span><span class="s0">&lt;/body&gt;</span><span class="s3">
-        </span><span class="s0">&lt;/html&gt;</span><span class="s3">
-    </span><span class="s0">&lt;/xsl:template&gt;</span><span class="s3">
-</span><span class="s0">&lt;/xsl:stylesheet&gt;</span></pre>
-</div>
+                <!--</span><span class="s0">&lt;table </span><span class="s1">border</span><span class="s2">=&quot;1&quot;</span><span class="s0">&gt;</span><span class="s3">-->
+                    <!--</span><span class="s0">&lt;b&gt;&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;/data/animals/title&quot;</span><span class="s0">/&gt;</span><span class="s3">:</span><span class="s0">&lt;/b&gt;</span><span class="s3">-->
+                    <!--</span><span class="s0">&lt;xsl:for-each </span><span class="s1">select</span><span class="s2">=&quot;/data/animals/dogs/dog&quot;</span><span class="s0">&gt;</span><span class="s4">&lt;!&#45;&#45; цикл для каждого элемента из блока: /data/animals/dogs/dog &#45;&#45;&gt;</span><span class="s3">-->
+                        <!--</span><span class="s0">&lt;tr&gt;</span><span class="s3">-->
+                            <!--</span><span class="s0">&lt;td&gt;</span><span class="s3">-->
+                                <!--</span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogName&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!&#45;&#45; получить содержимое &quot;value-of&quot;, из узла с именем: dogName &#45;&#45;&gt;</span><span class="s3">-->
+                            <!--</span><span class="s0">&lt;/td&gt;</span><span class="s3">-->
+                            <!--</span><span class="s0">&lt;td&gt;</span><span class="s3">-->
+                                <!--</span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogWeight&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!&#45;&#45; получить содержимое &quot;value-of&quot;, из узла с именем: dogWeight &#45;&#45;&gt;</span><span class="s3">-->
+                                <!--</span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogWeight/@caption&quot;</span><span class="s0">/&gt;</span><span-->
+        <!--class="s4">&lt;!&#45;&#45; получить содержимое &quot;value-of&quot;, из узла с именем: dogWeight и аттрибутом: caption &#45;&#45;&gt;</span><span class="s3">-->
+                            <!--</span><span class="s0">&lt;/td&gt;</span><span class="s3">-->
+                            <!--</span><span class="s0">&lt;td&gt;</span><span class="s3">-->
+                                <!--</span><span class="s0">&lt;xsl:value-of </span><span class="s1">select</span><span class="s2">=&quot;dogColor&quot;</span><span class="s0">/&gt;</span><span class="s4">&lt;!&#45;&#45; получить содержимое &quot;value-of&quot;, из узла с именем: dogColor &#45;&#45;&gt;</span><span class="s3">-->
+                            <!--</span><span class="s0">&lt;/td&gt;</span><span class="s3">-->
+                        <!--</span><span class="s0">&lt;/tr&gt;</span><span class="s3">-->
+                    <!--</span><span class="s0">&lt;/xsl:for-each&gt;</span><span class="s3">-->
+                <!--</span><span class="s0">&lt;/table&gt;</span><span class="s3">-->
+            <!--</span><span class="s0">&lt;/body&gt;</span><span class="s3">-->
+        <!--</span><span class="s0">&lt;/html&gt;</span><span class="s3">-->
+    <!--</span><span class="s0">&lt;/xsl:template&gt;</span><span class="s3">-->
+<!--</span><span class="s0">&lt;/xsl:stylesheet&gt;</span></pre>-->
+<!--</div>-->
+
+<div><script src="https://gist.github.com/romanitalian/c917b0398fd5972ddb71.js"></script></div>
 
 <div>
     <h3>Результат преобразования xml с помощью xslt</h3>
@@ -152,7 +154,6 @@
         <img src="/images/how_to_use_xslt/screenshot_in_ie.png" alt="Результат преобразования xml с помощью xslt"/>
     </div>
 </div>
-
 
 <!-- Yandex.MMetrika counter -->
 <script>   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');    ga('create', 'UA-65278133-1', 'auto');   ga('send', 'pageview');  </script>

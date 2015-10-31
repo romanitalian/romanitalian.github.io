@@ -52,90 +52,91 @@
         }
     </style>
 </head>
-<h2 style="text-align: left;"><a href="/">romanitalian notes</a> / <b>Time execution: foreach vs array_map (parse csv)</b></h2>
+<h1 style="text-align: left;"><a href="/">romanitalian notes</a> / <b>Time execution: foreach vs array_map (parse csv)</b></h1>
 <p>Среднее время работы - цикла foreach к среднему времени работы array_map, на примере парсинга csv файла: 2.9423094638524 (в данном примере)</p>
-<div style="background-color: #2b2b2b; ">
+<!--<div style="background-color: #2b2b2b; ">-->
 
-    <TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0">
-        <TR>
-            <TD>
-                <CENTER>
-                    <FONT FACE="Arial, Helvetica" COLOR="#000000">
-                        m_str_getcsv.php</FONT>
-                </center>
-            </TD>
-        </TR>
-    </TABLE>
-<pre>
+    <!--<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0">-->
+        <!--<TR>-->
+            <!--<TD>-->
+                <!--<CENTER>-->
+                    <!--<FONT FACE="Arial, Helvetica" COLOR="#000000">-->
+                        <!--m_str_getcsv.php</FONT>-->
+                <!--</center>-->
+            <!--</TD>-->
+        <!--</TR>-->
+    <!--</TABLE>-->
+<!--<pre>-->
 
-<span class="s0">&lt;?php</span><span class="s1">
+<!--<span class="s0">&lt;?php</span><span class="s1">-->
 
-</span><span class="s2">/**
- * Parse csv using: array_map
- * </span><span class="s3">@param </span><span class="s2">$path_to_csv_file
- * </span><span class="s3">@param </span><span class="s2">string $delimiter
- * </span><span class="s3">@return </span><span class="s2">array
- */</span><span class="s1">
-</span><span class="s0">function </span><span class="s1">m_str_getcsv(</span><span class="s4">$path_to_csv_file</span><span class="s5">, </span><span class="s4">$delimiter </span><span class="s1">= </span><span class="s6">&quot;;&quot;</span><span class="s1">) {
-    </span><span class="s0">return </span><span class="s1">array_map(
-        </span><span class="s0">function </span><span class="s1">(</span><span class="s4">$item</span><span class="s1">) </span><span class="s0">use </span><span class="s1">(</span><span class="s4">$delimiter</span><span class="s1">) {
-            </span><span class="s0">return </span><span class="s1">explode(</span><span class="s4">$delimiter</span><span class="s5">, </span><span class="s1">trim(</span><span class="s4">$item</span><span class="s1">))</span><span class="s5">;</span><span class="s1">
-        }</span><span class="s5">,</span><span class="s1">
-        file(</span><span class="s4">$path_to_csv_file</span><span class="s1">)
-    )</span><span class="s5">;</span><span class="s1">
-}
+<!--</span><span class="s2">/**-->
+ <!--* Parse csv using: array_map-->
+ <!--* </span><span class="s3">@param </span><span class="s2">$path_to_csv_file-->
+ <!--* </span><span class="s3">@param </span><span class="s2">string $delimiter-->
+ <!--* </span><span class="s3">@return </span><span class="s2">array-->
+ <!--*/</span><span class="s1">-->
+<!--</span><span class="s0">function </span><span class="s1">m_str_getcsv(</span><span class="s4">$path_to_csv_file</span><span class="s5">, </span><span class="s4">$delimiter </span><span class="s1">= </span><span class="s6">&quot;;&quot;</span><span class="s1">) {-->
+    <!--</span><span class="s0">return </span><span class="s1">array_map(-->
+        <!--</span><span class="s0">function </span><span class="s1">(</span><span class="s4">$item</span><span class="s1">) </span><span class="s0">use </span><span class="s1">(</span><span class="s4">$delimiter</span><span class="s1">) {-->
+            <!--</span><span class="s0">return </span><span class="s1">explode(</span><span class="s4">$delimiter</span><span class="s5">, </span><span class="s1">trim(</span><span class="s4">$item</span><span class="s1">))</span><span class="s5">;</span><span class="s1">-->
+        <!--}</span><span class="s5">,</span><span class="s1">-->
+        <!--file(</span><span class="s4">$path_to_csv_file</span><span class="s1">)-->
+    <!--)</span><span class="s5">;</span><span class="s1">-->
+<!--}-->
 
-</span><span class="s2">/**
- * Parse csv using: foreach
- * </span><span class="s3">@param </span><span class="s2">$path
- * </span><span class="s3">@return </span><span class="s2">array
- */</span><span class="s1">
-</span><span class="s0">function </span><span class="s1">m2_str_getcsv(</span><span class="s4">$path</span><span class="s1">) {
-    </span><span class="s4">$out </span><span class="s1">= </span><span class="s0">array</span><span class="s1">()</span><span class="s5">;</span><span class="s1">
-    </span><span class="s4">$s </span><span class="s1">= trim(file_get_contents(</span><span class="s4">$path</span><span class="s1">))</span><span class="s5">;</span><span class="s1">
-    </span><span class="s4">$rows </span><span class="s1">= explode(</span><span class="s6">&quot;</span><span class="s5">\n</span><span class="s6">&quot;</span><span class="s5">, </span><span class="s4">$s</span><span class="s1">)</span><span class="s5">;</span><span class="s1">
-    </span><span class="s0">if</span><span class="s1">(!</span><span class="s0">empty</span><span class="s1">(</span><span class="s4">$rows</span><span class="s1">)) {
-        </span><span class="s0">foreach</span><span class="s1">(</span><span class="s4">$rows </span><span class="s0">as </span><span class="s4">$row</span><span class="s1">) {
-            </span><span class="s4">$out</span><span class="s1">[] = explode(</span><span class="s6">&quot;;&quot;</span><span class="s5">, </span><span class="s4">$row</span><span class="s1">)</span><span class="s5">;</span><span class="s1">
-        }
-    }
-    </span><span class="s0">return </span><span class="s4">$out</span><span class="s5">;</span><span class="s1">
-}
+<!--</span><span class="s2">/**-->
+ <!--* Parse csv using: foreach-->
+ <!--* </span><span class="s3">@param </span><span class="s2">$path-->
+ <!--* </span><span class="s3">@return </span><span class="s2">array-->
+ <!--*/</span><span class="s1">-->
+<!--</span><span class="s0">function </span><span class="s1">m2_str_getcsv(</span><span class="s4">$path</span><span class="s1">) {-->
+    <!--</span><span class="s4">$out </span><span class="s1">= </span><span class="s0">array</span><span class="s1">()</span><span class="s5">;</span><span class="s1">-->
+    <!--</span><span class="s4">$s </span><span class="s1">= trim(file_get_contents(</span><span class="s4">$path</span><span class="s1">))</span><span class="s5">;</span><span class="s1">-->
+    <!--</span><span class="s4">$rows </span><span class="s1">= explode(</span><span class="s6">&quot;</span><span class="s5">\n</span><span class="s6">&quot;</span><span class="s5">, </span><span class="s4">$s</span><span class="s1">)</span><span class="s5">;</span><span class="s1">-->
+    <!--</span><span class="s0">if</span><span class="s1">(!</span><span class="s0">empty</span><span class="s1">(</span><span class="s4">$rows</span><span class="s1">)) {-->
+        <!--</span><span class="s0">foreach</span><span class="s1">(</span><span class="s4">$rows </span><span class="s0">as </span><span class="s4">$row</span><span class="s1">) {-->
+            <!--</span><span class="s4">$out</span><span class="s1">[] = explode(</span><span class="s6">&quot;;&quot;</span><span class="s5">, </span><span class="s4">$row</span><span class="s1">)</span><span class="s5">;</span><span class="s1">-->
+        <!--}-->
+    <!--}-->
+    <!--</span><span class="s0">return </span><span class="s4">$out</span><span class="s5">;</span><span class="s1">-->
+<!--}-->
 
-</span><span class="s2">/**
- * </span><span class="s3">@param </span><span class="s2">$func
- * </span><span class="s3">@param </span><span class="s2">$count_execution_func
- * </span><span class="s3">@return </span><span class="s2">string
- */</span><span class="s1">
-</span><span class="s0">function </span><span class="s1">run_test(</span><span class="s4">$func</span><span class="s5">, </span><span class="s4">$count_execution_func </span><span class="s1">= </span><span class="s7">100</span><span class="s1">) {
-    </span><span class="s4">$t </span><span class="s1">= microtime(true)</span><span class="s5">;</span><span class="s1">
-    </span><span class="s4">$times </span><span class="s1">= </span><span class="s0">array</span><span class="s1">()</span><span class="s5">;</span><span class="s1">
-    </span><span class="s4">$path </span><span class="s1">= </span><span class="s6">'otchet.csv'</span><span class="s5">;</span><span class="s1">
-    </span><span class="s0">for</span><span class="s1">(</span><span class="s4">$i </span><span class="s1">= </span><span class="s7">0</span><span class="s5">; </span><span class="s4">$i </span><span class="s1">&lt; </span><span class="s4">$count_execution_func</span><span class="s5">; </span><span class="s1">++</span><span
-        class="s4">$i</span><span class="s1">) {
-        </span><span class="s4">$func</span><span class="s1">(</span><span class="s4">$path</span><span class="s1">)</span><span class="s5">;</span><span class="s1">
-        </span><span class="s4">$times</span><span class="s1">[] = microtime(true) - </span><span class="s4">$t</span><span class="s5">;</span><span class="s1">
-    }
-    </span><span class="s0">return </span><span class="s4">$times</span><span class="s5">;</span><span class="s1">
-}
+<!--</span><span class="s2">/**-->
+ <!--* </span><span class="s3">@param </span><span class="s2">$func-->
+ <!--* </span><span class="s3">@param </span><span class="s2">$count_execution_func-->
+ <!--* </span><span class="s3">@return </span><span class="s2">string-->
+ <!--*/</span><span class="s1">-->
+<!--</span><span class="s0">function </span><span class="s1">run_test(</span><span class="s4">$func</span><span class="s5">, </span><span class="s4">$count_execution_func </span><span class="s1">= </span><span class="s7">100</span><span class="s1">) {-->
+    <!--</span><span class="s4">$t </span><span class="s1">= microtime(true)</span><span class="s5">;</span><span class="s1">-->
+    <!--</span><span class="s4">$times </span><span class="s1">= </span><span class="s0">array</span><span class="s1">()</span><span class="s5">;</span><span class="s1">-->
+    <!--</span><span class="s4">$path </span><span class="s1">= </span><span class="s6">'otchet.csv'</span><span class="s5">;</span><span class="s1">-->
+    <!--</span><span class="s0">for</span><span class="s1">(</span><span class="s4">$i </span><span class="s1">= </span><span class="s7">0</span><span class="s5">; </span><span class="s4">$i </span><span class="s1">&lt; </span><span class="s4">$count_execution_func</span><span class="s5">; </span><span class="s1">++</span><span-->
+        <!--class="s4">$i</span><span class="s1">) {-->
+        <!--</span><span class="s4">$func</span><span class="s1">(</span><span class="s4">$path</span><span class="s1">)</span><span class="s5">;</span><span class="s1">-->
+        <!--</span><span class="s4">$times</span><span class="s1">[] = microtime(true) - </span><span class="s4">$t</span><span class="s5">;</span><span class="s1">-->
+    <!--}-->
+    <!--</span><span class="s0">return </span><span class="s4">$times</span><span class="s5">;</span><span class="s1">-->
+<!--}-->
 
-</span><span class="s8">//////////////////////////////////////// test: ////////////////////</span><span class="s1">
+<!--</span><span class="s8">//////////////////////////////////////// test: ////////////////////</span><span class="s1">-->
 
-</span><span class="s4">$t</span><span class="s1">[] = run_test(</span><span class="s6">'m_str_getcsv'</span><span class="s1">)</span><span class="s5">;</span><span class="s1">
-</span><span class="s4">$t</span><span class="s1">[] = run_test(</span><span class="s6">'m2_str_getcsv'</span><span class="s1">)</span><span class="s5">;</span><span class="s1">
+<!--</span><span class="s4">$t</span><span class="s1">[] = run_test(</span><span class="s6">'m_str_getcsv'</span><span class="s1">)</span><span class="s5">;</span><span class="s1">-->
+<!--</span><span class="s4">$t</span><span class="s1">[] = run_test(</span><span class="s6">'m2_str_getcsv'</span><span class="s1">)</span><span class="s5">;</span><span class="s1">-->
 
-</span><span class="s0">echo </span><span class="s6">&quot;&lt;pre&gt;</span><span class="s5">\n\n</span><span class="s6">&quot;</span><span class="s1">.str_replace(</span><span class="s6">'.'</span><span class="s5">, </span><span class="s6">','</span><span class="s5">, </span><span class="s1">implode(</span><span
-        class="s6">&quot;</span><span class="s5">\n</span><span class="s6">&quot;</span><span class="s5">, </span><span class="s4">$t</span><span class="s1">[</span><span class="s7">0</span><span class="s1">])).</span><span class="s6">&quot;&lt;/pre&gt;&quot;</span><span class="s5">;</span><span class="s1">
-</span><span class="s0">echo </span><span class="s6">&quot;&lt;pre&gt;</span><span class="s5">\n\n</span><span class="s6">&quot;</span><span class="s1">.str_replace(</span><span class="s6">'.'</span><span class="s5">, </span><span class="s6">','</span><span class="s5">, </span><span class="s1">implode(</span><span
-        class="s6">&quot;</span><span class="s5">\n</span><span class="s6">&quot;</span><span class="s5">, </span><span class="s4">$t</span><span class="s1">[</span><span class="s7">1</span><span class="s1">])).</span><span class="s6">&quot;&lt;/pre&gt;&quot;</span><span class="s5">;</span><span class="s1">
+<!--</span><span class="s0">echo </span><span class="s6">&quot;&lt;pre&gt;</span><span class="s5">\n\n</span><span class="s6">&quot;</span><span class="s1">.str_replace(</span><span class="s6">'.'</span><span class="s5">, </span><span class="s6">','</span><span class="s5">, </span><span class="s1">implode(</span><span-->
+        <!--class="s6">&quot;</span><span class="s5">\n</span><span class="s6">&quot;</span><span class="s5">, </span><span class="s4">$t</span><span class="s1">[</span><span class="s7">0</span><span class="s1">])).</span><span class="s6">&quot;&lt;/pre&gt;&quot;</span><span class="s5">;</span><span class="s1">-->
+<!--</span><span class="s0">echo </span><span class="s6">&quot;&lt;pre&gt;</span><span class="s5">\n\n</span><span class="s6">&quot;</span><span class="s1">.str_replace(</span><span class="s6">'.'</span><span class="s5">, </span><span class="s6">','</span><span class="s5">, </span><span class="s1">implode(</span><span-->
+        <!--class="s6">&quot;</span><span class="s5">\n</span><span class="s6">&quot;</span><span class="s5">, </span><span class="s4">$t</span><span class="s1">[</span><span class="s7">1</span><span class="s1">])).</span><span class="s6">&quot;&lt;/pre&gt;&quot;</span><span class="s5">;</span><span class="s1">-->
 
-</span><span class="s8">// average time execution: foreach vs array_map</span><span class="s1">
-</span><span class="s0">echo </span><span class="s1">(array_sum(</span><span class="s4">$t</span><span class="s1">[</span><span class="s7">0</span><span class="s1">])/count(</span><span class="s4">$t</span><span class="s1">[</span><span class="s7">0</span><span class="s1">])) / (array_sum(</span><span
-        class="s4">$t</span><span class="s1">[</span><span class="s7">1</span><span class="s1">])/count(</span><span class="s4">$t</span><span class="s1">[</span><span class="s7">1</span><span class="s1">]))</span><span class="s5">; </span><span class="s8">// 2.9423094638524</span><span class="s1">
-</span></pre>
-    <br/>
-    <br/>
-</div>
+<!--</span><span class="s8">// average time execution: foreach vs array_map</span><span class="s1">-->
+<!--</span><span class="s0">echo </span><span class="s1">(array_sum(</span><span class="s4">$t</span><span class="s1">[</span><span class="s7">0</span><span class="s1">])/count(</span><span class="s4">$t</span><span class="s1">[</span><span class="s7">0</span><span class="s1">])) / (array_sum(</span><span-->
+        <!--class="s4">$t</span><span class="s1">[</span><span class="s7">1</span><span class="s1">])/count(</span><span class="s4">$t</span><span class="s1">[</span><span class="s7">1</span><span class="s1">]))</span><span class="s5">; </span><span class="s8">// 2.9423094638524</span><span class="s1">-->
+<!--</span></pre>-->
+    <!--<br/>-->
+    <!--<br/>-->
+<!--</div>-->
+<div><script src="https://gist.github.com/romanitalian/7d611b0d1648e92b603c.js"></script></div>
 <div>
     <p>Пример тестирования с графиком времени исполнения:</p>
     <img src="/images/csv_parse_foreach_vs_array_map/m_str_getcsv.jpg"/>
