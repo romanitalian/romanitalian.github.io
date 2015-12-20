@@ -78,6 +78,7 @@
     Заходим в: Settings > SSH keys > Add SSH key > Add key</p>
 
     <h3>4. Тест соединения (локально)</h3>
+
     <p># Тест соединения<br />
     <span class="code_bash">ssh -T git@github.com</span></p>
     <p>Ответ должен быть такой: "Hi username! You've successfully authenticated, but GitHub does not provide shell access."</p>
@@ -88,6 +89,20 @@
 
     <p># Клонируем репозиторий<br />
     <span class="code_bash">git clone git@github.com:romanitalian/PHP7-Reference.git</span></p>
+
+    <p>6. Создание изменений</p>
+    <p>Необходимо добавить файл или изменить содержимое уже существующего</p>
+
+    <p>7. Коммит изменений<p>
+
+    <p># Добавление изменений в индекс<br />\
+    <span class="code_bash">git add .</span><p>
+    <p># Коммит изменений<br />
+    <span class="code_bash">git commit -m "test commit :) Some description"</span><p>
+
+    <p>8. Заливка изменения на удалённый репозиторий (на github)</p>
+    <p># Заливка<br />
+    <span class="code_bash">git push</span><p>
 
 </div>
 
