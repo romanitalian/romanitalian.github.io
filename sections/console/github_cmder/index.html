@@ -9,6 +9,10 @@
             display: block;
             padding-bottom: 20px;
         }
+        .code_bash {
+            color: #FF5722;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -47,25 +51,25 @@
 
     <p># Если нет каталога .ssh</p>
     <p># - переходим в домашний каталог<br />
-    cd ~</p>
+    <span class="code_bash">cd ~</span></p>
 
     <p># - создаём нужный нам каталог<br />
-    mkdir .ssh</p>
+    <span class="code_bash">mkdir .ssh</span></p>
     <p># - переходим в него<br />
-    cd .ssh</p>
+    <span class="code_bash">cd .ssh</span></p>
 
-    # Создаём новые ssh ключи<br />
-    ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+    <p># Создаём новые ssh ключи<br />
+    <span class="code_bash">ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</span></p>
 
     # Запускаем ssh-agent (в фоновом режиме)<br />
-    ssh-agent -s</p>
+    <span class="code_bash">ssh-agent -s</span></p>
 
     <h3>2. Добавить локально приватный ключ</h3>
     <p># Добавляем приватный ключ<br />
-    ssh-add id_rsa</p>
+    <span class="code_bash">ssh-add id_rsa</span></p>
 
     <p># Копируем в буфер обмена публичный ключ<br />
-    clip < id_rsa.pub</p>
+    <span class="code_bash">clip < id_rsa.pub</span></p>
 
     <h3>3. Добавляем на github публичный ключ (делаем это на уданённом сервере, там где находится репозиторий)</h3>
     <p>Далее заходим под своим аккаунтом на github.com<br />
@@ -73,17 +77,17 @@
 
     <h3>4. Тест соединения (локально)</h3>
     <p># Тест соединения<br />
-    ssh -T git@github.com</p>
+    <span class="code_bash">ssh -T git@github.com</span></p>
     <p>Ответ должен быть такой: "Hi username! You've successfully authenticated, but GitHub does not provide shell access."</p>
 
     <h3>5. Клонируем репозиторий (локально :) )</h3>
-    <p>Переходим в каталог с проектом, куда будем клонировать репозиторий<br />
-    # cd ~/projects/test/01</p>
+    <p># Переходим в каталог с проектом, куда будем клонировать репозиторий<br />
+    <span class="code_bash">cd ~/projects/test/01</span></p>
 
-    <p>Клонируем репозиторий<br />
-    # git clone git@github.com:romanitalian/PHP7-Reference.git</p>
+    <p># Клонируем репозиторий<br />
+    <span class="code_bash">git clone git@github.com:romanitalian/PHP7-Reference.git</span></p>
 
-
+</div>
 
 <script>   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');    ga('create', 'UA-65278133-1', 'auto');   ga('send', 'pageview');  </script>
 <script async src="https://cdn.onthe.io/io.js?QjJldonyo8jZ"></script>
