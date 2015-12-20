@@ -41,10 +41,9 @@
     <p>Для клонирования нам необходимо:</p>
     <ul>
         <li>1. Создать ssh ключи (локально)</li>
-        <li>2. Добавить локально приватный ключ (локально)</li>
-        <li>3. Добавить на github публичный ключ (на удалённом сервере)</li>
-        <li>4. Тест соединения (локально)</li>
-        <li>5. Клонируем репозиторий (локально :) )</li>
+        <li>2. Добавить на github публичный ключ (на удалённом сервере)</li>
+        <li>3. Тест соединения (локально)</li>
+        <li>4. Клонируем репозиторий (локально :) )</li>
     </ul>
 
     <h3>1. Создание ssh ключей</h3>
@@ -53,7 +52,7 @@
 
     <p># Если нет каталога .ssh</p>
     <p># - переходим в домашний каталог<br />
-    <span class="code_bash">cd ~</span></p>
+    <span class="code_bash">cd "C:\Users\%YOUR_USER_NAME%"</span></p>
 
     <p># - создаём нужный нам каталог<br />
     <span class="code_bash">mkdir .ssh</span></p>
@@ -66,41 +65,37 @@
     # Запускаем ssh-agent (в фоновом режиме)<br />
     <span class="code_bash">ssh-agent -s</span></p>
 
-    <h3>2. Добавить локально приватный ключ</h3>
-    <p># Добавляем приватный ключ<br />
-    <span class="code_bash">ssh-add id_rsa</span></p>
-
     <p># Копируем в буфер обмена публичный ключ<br />
     <span class="code_bash">clip < id_rsa.pub</span></p>
 
-    <h3>3. Добавляем на github публичный ключ (делаем это на уданённом сервере, там где находится репозиторий)</h3>
+    <h3>2. Добавляем на github публичный ключ (делаем это на уданённом сервере, там где находится репозиторий)</h3>
     <p>Далее заходим под своим аккаунтом на github.com<br />
     Заходим в: Settings > SSH keys > Add SSH key > Add key</p>
 
-    <h3>4. Тест соединения (локально)</h3>
+    <h3>3. Тест соединения (локально)</h3>
 
     <p># Тест соединения<br />
     <span class="code_bash">ssh -T git@github.com</span></p>
     <p>Ответ должен быть такой: "Hi username! You've successfully authenticated, but GitHub does not provide shell access."</p>
 
-    <h3>5. Клонируем репозиторий (локально :) )</h3>
+    <h3>4. Клонируем репозиторий (локально :) )</h3>
     <p># Переходим в каталог с проектом, куда будем клонировать репозиторий<br />
     <span class="code_bash">cd ~/projects/test/01</span></p>
 
     <p># Клонируем репозиторий<br />
     <span class="code_bash">git clone git@github.com:romanitalian/PHP7-Reference.git</span></p>
 
-    <p>6. Создание изменений</p>
+    <p>5. Создание изменений</p>
     <p>Необходимо добавить файл или изменить содержимое уже существующего</p>
 
-    <p>7. Коммит изменений<p>
+    <p>6. Коммит изменений<p>
 
     <p># Добавление изменений в индекс<br />
     <span class="code_bash">git add .</span><p>
     <p># Коммит изменений<br />
     <span class="code_bash">git commit -m "test commit :) Some description"</span><p>
 
-    <p>8. Заливка изменения на удалённый репозиторий (на github)</p>
+    <p>7. Заливка изменения на удалённый репозиторий (на github)</p>
     <p># Заливка<br />
     <span class="code_bash">git push</span><p>
 
