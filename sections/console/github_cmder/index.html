@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Как в cmder клонировать репозиторий github и залить изменения в remote/origin (os: windows)</title>
+    <title>cmder: generate ssh keys, clone gihub repository (os: windows)</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
     <style>
         img {
@@ -14,74 +14,77 @@
 <body>
 <h1 style="text-align: left;"><a href="/">romanitalian notes</a> / <b>Как в cmder клонировать репозиторий github и залить изменения в remote/origin (os: windows)</b></h1>
 <div>
-    <p>Посредством чего работать с git/github:</p>
-    <p>Для работы с репозиториями git (в том числе и с github), на windows, можно использовать различные средства (посредством: https, ssh или скачивая архивы).</p>
-    <p>К таковым относятся:</p>
+    <h2>Вводная часть</h2>
+    <p>Инструменты для работы с git (github):</p>
     <ul>
-        <li>&nbsp;GUI Clients for git/github:&nbsp;GitHub for Windows,&nbsp;Git Extensions, SourceTree, git-cola, SmartGit, GitEye, etc [<a href="http://git-scm.com/downloads/guis">http://git-scm.com/downloads/guis</a>]</li>
-        <li>console utils: git bash [<a href="https://msysgit.github.io/">https://msysgit.github.io/</a>], putty [<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a>]</li>
+        <li>GUI Clients:&nbsp;GitHub for Windows,&nbsp;Git Extensions, TortoiseGit, SourceTree, git-cola, SmartGit, GitEye, etc [<a href="http://git-scm.com/downloads/guis">http://git-scm.com/downloads/guis</a>]</li>
+        <li>Сonsole utils</li>
     </ul>
-    <p>Рекомендуется использовать&nbsp;console utils&nbsp;- быстрее и интерфейс пользователя - единый - консоль.</p>
-    <p>Git Bash входим в пакет&nbsp;msysgit, который может быть включён во множество программ - используется для эмуляции работы unix (posix совместимых систем) - на windows.</p>
-    <p>Например, msysgit входит в состав окружения для консольной программы: cmder.</p>
-    <br/>
-    В состав cmder входят:<br/>
-    - ssh-agent<br/>
-    - ssh-keygen<br/>
-    - git bash<br/>
-    <br/>
-    -----------------------------<br/>
-    <div style="text-align: left;">
-        Для того, чтобы подключиться к github репозиторию нам нужно сгенерировать ключи: публичный и приватный.
-    </div>
-    Публичный мы добавим в настройках подключения github. А приватный добавим в ssh-agent (в окружении&nbsp;msysgit).<br/>
-    <br/>
-    -----------------------------<br/>
+    <p>Рекомендуется использовать&nbsp;console utils&nbsp;- быстрее чем GUI Clients. Плюс, интерфейс пользователя - единый (команды в консоли очень редко меняются).</p>
+    <p>Множество консольных утилит входит в проект msysgit.</p>
+    <p>msysgit используется для эмуляции работы unix (posix совместимых систем) - в Windows.</p>
+    <p>msysgit включает git и необходимые проекты для работы с ним.</p>
+    <p>Консольный эмулятор для Windoows cmder - включает msysgit</p>
 
-    <h2 style="text-align: left;">
-        <b>Как:</b></h2>
+    <p>Для удалённой работы с git по ssh - необходимы ключи: приватный и публичный.</p>
+    <p>Приватный - нужно добавить в ssh-agent (локально).</p>
+    <p>Публичный - нужно добавить на сервере (там где лежит удалённые репозиторий. В нашем случае это: в настройках github).</p>
+    <p>Ключи нужно сгенерить.</p>
 
-    <h3 style="text-align: left;">
-        <b>-- 1 -- Создаём каталог для ключей</b></h3>
-    1. Устанавливем cmder [<a href="http://gooseberrycreative.com/cmder/">http://gooseberrycreative.com/cmder/</a>]<br/>
-    2. Заходим в cmder в домашний каталог пользователя (или любой другой, где собираетесь хранить ssh ключи). Например:&nbsp;C:\Users\%USERNAME%<br/>
-    3. Создаём каталог: ".ssh"<br/>
+    <p>Нам необходимо:</p>
+    <ul>
+        <li>1. Создать ssh ключи (локально)</li>
+        <li>2. Добавить локально приватный ключ (локально)</li>
+        <li>3. Добавить на github публичный ключ (на удалённом сервере)</li>
+        <li>4. Тест соединения (локально)</li>
+        <li>5. Клонируем репозиторий (локально :) )</li>
+    </ul>
 
-    <h3 style="text-align: left;">
-        <b>-- 2 --&nbsp;</b><b>Создание ssh ключей</b></h3>
-    <br/>
-    4. В консоли cmder исполняем следующие команды:<br/>
-    -&nbsp;<b>[</b><b>ssh-keygen -t rsa -C "you@gmail.com"</b><b>]</b>. После этого в текущем каталоге будут созданы ключи. (you@gmail.com - заменить на Ваш email).<br/>
-    <img src="/images/cmder_gihub/ssh_keygen_t_rsa_c_email.jpg" alt="Создание ssh ключей" title="Создание ssh ключей"/>
-    -&nbsp;<b>[</b><b>ssh -T git@github.com</b><b>]</b>&nbsp;- проверка подключения к gihub посредством ssh-agent.<br/>
-    <img src="/images/cmder_gihub/ssh_t_git_github_com.jpg" alt="Проверка подключения к gihub посредством ssh-agent" title="Проверка подключения к gihub посредством ssh-agent"/>
-    <br/>
-    <br/>
 
-    <h3 style="text-align: left;">
-        <b>-- 3 --&nbsp;</b><b>Добавление ssh ключей&nbsp;в ssh-agent&nbsp;</b></h3>
-    <div style="text-align: left;">
-        -&nbsp;<b>[</b><b>ssh-add id_rsa</b><b>]</b>&nbsp;- добавить приватный ключ в ssh-agent (в окружении&nbsp;msysgit). Здесь&nbsp;id_rsa - имя файла приватного ключа.
-        <img src="/images/cmder_gihub/ssh_add_id_rsa.jpg" alt="Добавить приватный ключ в ssh-agent" title="Добавить приватный ключ в ssh-agent"/>
-    </div>
-    <br/>
+    <h3>1. Создание ssh ключей</h3>
+    <p># Проверяем существование каталога с ключами (обычно он находится в домашнем каталоге пользователя)<br />
+    ls ~/.ssh</p>
 
-    <h3 style="text-align: left;">
-        <b>-- 4 --&nbsp;</b><b>Добавление ssh ключей&nbsp;в Ваш аккаунт в репозиторий (github)</b></h3>
-    5.&nbsp;<b>[git config --global user.email "you.github@gmail.com"]</b>&nbsp;- добавим свой email (из аккаунта github)<br/>
-    6. В Ваших настройках на github заходим в&nbsp;<b>Settings - SSH keys: Add SSH key</b>.<br/>
-    Здесь:<br/>
-    - поле "Title" произвольно;<br/>
-    - поле "Key" - копируем содержимое файлы с публичным ключём (например: id_rsa.pub - открываем через любой блокнот - главное, чтобы файл назывался: *.pub).<br/>
-    <br/>
-    <br/>
-    Ваш клиент по работе с github настроен!<br/>
-    <br/>
-    Переходим в каталог, где предполагаем работать с github.<br/>
-    И делаем [git clone], [git add .], [git commit -am 'fix'], [git push origin], ...<br/>
-    </div>
+    <p># Если нет каталога .ssh</p>
+    <p># - переходим в домашний каталог<br />
+    cd ~</p>
 
-<!-- Yandex.MMetrika counter -->
+    <p># - создаём нужный нам каталог<br />
+    mkdir .ssh</p>
+    <p># - переходим в него<br />
+    cd .ssh</p>
+
+    # Создаём новые ssh ключи<br />
+    ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+    # Запускаем ssh-agent (в фоновом режиме)<br />
+    ssh-agent -s</p>
+
+    <h3>2. Добавить локально приватный ключ</h3>
+    <p># Добавляем приватный ключ<br />
+    ssh-add id_rsa</p>
+
+    <p># Копируем в буфер обмена публичный ключ<br />
+    clip < id_rsa.pub</p>
+
+    <h3>3. Добавляем на github публичный ключ (делаем это на уданённом сервере, там где находится репозиторий)</h3>
+    <p>Далее заходим под своим аккаунтом на github.com<br />
+    Заходим в: Settings > SSH keys > Add SSH key > Add key</p>
+
+    <h3>4. Тест соединения (локально)</h3>
+    <p># Тест соединения<br />
+    ssh -T git@github.com</p>
+    <p>Ответ должен быть такой: "Hi username! You've successfully authenticated, but GitHub does not provide shell access."</p>
+
+    <h3>5. Клонируем репозиторий (локально :) )</h3>
+    <p>Переходим в каталог с проектом, куда будем клонировать репозиторий<br />
+    # cd ~/projects/test/01</p>
+
+    <p>Клонируем репозиторий<br />
+    # git clone git@github.com:romanitalian/PHP7-Reference.git</p>
+
+
+
 <script>   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');    ga('create', 'UA-65278133-1', 'auto');   ga('send', 'pageview');  </script>
 <script async src="https://cdn.onthe.io/io.js?QjJldonyo8jZ"></script>
 
