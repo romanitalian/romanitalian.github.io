@@ -1,28 +1,44 @@
 body {
-    font-family: "Courier", "Tahoma";
+    font-family: "Courier", "Tahoma", monospace;
     color: #696969;
 }
+
 ul.rows {
     list-style-type: none;
 }
+
 ul > li {
     padding-bottom: 5px;
 }
+
 h1 {
     font-size: 1.125em;
 }
+
 h2 {
     font-size: 1em;
 }
+
 h3 {
     font-size: 0.8775em;
 }
+
 h4 {
     font-size: 0.84em;
 }
+
 h5 {
     font-size: 0.6225em;
 }
+
 h6 {
     font-size: 0.5625em;
+}
+
+pre {
+    margin-left: 2%;
+    padding: 1%;
+    display: block;
+    background-color: rgba(227, 227, 235, 0.52);
+    border-left: 10px solid #D9D9D9;
 }
