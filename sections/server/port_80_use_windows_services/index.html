@@ -10,7 +10,7 @@
 <div>
     <p>How to resolve this message on Windows 10. For example, if you want run Apache service on port 80.</p>
     <p>
-        <pre>
+        <pre class="code">
 --------------------------------------------
 Start server start-up procedure
 Unable to take port 80 because it is already in use: Windows Services
@@ -19,7 +19,7 @@ Failed to start!</pre>
     <p>This solution works:</p>
     <p>Just execute this on your console (cmd) with access administrator:</p>
     <p>
-        <pre>
+        <pre class="code">
 C:\WINDOWS\system32>netsh http add iplisten ipaddress=::
 
 IP-адрес успешно добавлен
@@ -34,7 +34,7 @@ C:\WINDOWS\system32>shatdown /r
 
     <p>This solution doesn't work:</p>
     <p>
-        <pre>
+        <pre class="code">
 C:\WINDOWS\system32>netstat -aon | more
 
 Активные подключения
@@ -49,7 +49,7 @@ C:\WINDOWS\system32>netstat -aon | more
     </p>
 
     <p>
-    <pre>
+    <pre class="code">
 C:\WINDOWS\system32>taskkill /pid 4 /f
 Ошибка: Не удается завершить процесс с идентификатором 4.
 Причина: Отказано в доступе.
