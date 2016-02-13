@@ -19,15 +19,7 @@ Failed to start!</pre>
 
     <p>Just execute this on your console (cmd) with access administrator:</p>
     <pre class="code">
-C:\WINDOWS\system32>netsh http add iplisten ipaddress=::
-
-IP-адрес успешно добавлен
-
-
-C:\WINDOWS\system32>
-C:\WINDOWS\system32>echo 127.0.0.1 local >> C:\Windows\System32\drivers\etc\hosts
-
-C:\WINDOWS\system32>shatdown /r
+C:\WINDOWS\system32>netsh http add iplisten ipaddress=:: && echo 127.0.0.1 local >> C:\Windows\System32\drivers\etc\hosts && shatdown /r
 </pre>
     <p>This solution doesn't work:</p>
     <pre class="code">
