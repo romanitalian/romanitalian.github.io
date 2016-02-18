@@ -7,7 +7,7 @@
                 "email": "01110010 01101111 01101101 01100001 01101110 01101001 01110100 01100001 01101100 01101001 01100001 01101110 00101110 01101110 01100101 01110100 01000000 01100111 01101101 01100001 01101001 01101100 00101110 01100011 01101111 01101101 ",
                 "birthday": '1986-07-01',
                 "getAge": function() {return new Date().getFullYear() - new Date(this.birthday).getFullYear()},
-                "career": "web programmer"
+                "career": "Web Developer"
             },
             "languages": {
                 "human": [
