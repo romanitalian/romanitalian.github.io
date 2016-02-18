@@ -41,7 +41,7 @@
     };
     var ri = new Romanitalian();
     var riInfo = ri.getInfo();
-    console.log('My email: ' + Utils.binToTxt(riInfo.email));
+    console.log('My email: ' + Utils.binToTxt(riInfo.personal.email));
     console.log(riInfo);
     console.table(riInfo.languages.personal);
     console.table(riInfo.languages.computer);
