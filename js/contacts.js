@@ -37,4 +37,7 @@
             return binCode.join("");
         }
     };
+    var ri = new Romanitalian();
+    console.log('My email: ' + Utils.binToTxt(ri.getInfo().email));
+    console.log(ri.getInfo());
 })();
