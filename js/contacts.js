@@ -2,17 +2,19 @@
 (function () {
     var Romanitalian = function(window, undefined ) {
         var RomanitalianInfo = {
-            "name": "Roman",
-            "email": "01110010 01101111 01101101 01100001 01101110 01101001 01110100 01100001 01101100 01101001 01100001 01101110 00101110 01101110 01100101 01110100 01000000 01100111 01101101 01100001 01101001 01101100 00101110 01100011 01101111 01101101 ",
-            "birthday": '1986-07-01',
-            "getAge": function() {return new Date().getFullYear() - new Date(this.birthday).getFullYear()},
-            "career": "web programmer",
+            "personal": {
+                "name": "Roman",
+                "email": "01110010 01101111 01101101 01100001 01101110 01101001 01110100 01100001 01101100 01101001 01100001 01101110 00101110 01101110 01100101 01110100 01000000 01100111 01101101 01100001 01101001 01101100 00101110 01100011 01101111 01101101 ",
+                "birthday": '1986-07-01',
+                "getAge": function() {return new Date().getFullYear() - new Date(this.birthday).getFullYear()},
+                "career": "web programmer"
+            },
             "languages": {
                 "human": [
                     {"name": "rus", "level": "native"},
                     {"name": "eng", "level": "pre-intermediate"}
                 ],
-                "formal": [
+                "computer": [
                     {"name": "php", "level": 9},
                     {"name": "c++", "level": 3},
                     {"name": "python", "level": 4},
@@ -38,6 +40,9 @@
         }
     };
     var ri = new Romanitalian();
-    console.log('My email: ' + Utils.binToTxt(ri.getInfo().email));
-    console.log(ri.getInfo());
+    var riInfo = ri.getInfo();
+    console.log('My email: ' + Utils.binToTxt(riInfo.email));
+    console.log(riInfo);
+    console.table(riInfo.languages.personal);
+    console.table(riInfo.languages.computer);
 })();
