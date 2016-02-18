@@ -14,8 +14,9 @@
                     {"name": "rus", "level": "native"},
                     {"name": "eng", "level": "pre-intermediate"}
                 ],
-                "computer": [
+                "programming": [
                     {"name": "php", "level": 9},
+                    {"name": "ES5", "level": 6},
                     {"name": "c++", "level": 3},
                     {"name": "python", "level": 4},
                     {"name": "android", "level": 5}
@@ -43,6 +44,6 @@
     var riInfo = ri.getInfo();
     console.log('My email: ' + Utils.binToTxt(riInfo.personal.email));
     console.log(riInfo);
-    console.table(riInfo.personal);
-    console.table(riInfo.languages.computer);
+    console.log('My programming languages and their level (own estimation):');
+    console.table(riInfo.languages.programming);
 })();
