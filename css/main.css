@@ -42,3 +42,11 @@ pre.code {
     background-color: rgba(227, 227, 235, 0.52);
     border-left: 10px solid #D9D9D9;
 }
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
