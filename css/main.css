@@ -1,6 +1,7 @@
 body {
     font-family: "Courier", "Tahoma", monospace;
     color: #696969;
+    padding: 1%;
 }
 
 ul.rows {
@@ -17,6 +18,7 @@ h1 {
 
 h2 {
     font-size: 1em;
+    margin-top: 3%;
 }
 
 h3 {
@@ -49,4 +51,28 @@ a {
 }
 a:hover {
     text-decoration: underline;
+}
+.row {
+    padding-left: 2%;
+}
+.row table {
+    width: 96%;
+}
+.row table td {
+    padding: 1%;
+    border-bottom: 1px solid #d9d9d9;
+}
+ul.dashed {
+    list-style-type: none;
+}
+ul.dashed > li {
+    text-indent: -5px;
+}
+ul.dashed > li:before {
+    content: "- ";
+    text-indent: -5px;
+}
+
+table.one_row_first_col tr td:first-child{
+    white-space:nowrap;
 }
