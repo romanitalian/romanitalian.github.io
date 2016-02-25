@@ -1,4 +1,3 @@
-#romanitalian.github.io
-romanitalian.github.io notes
+#romanitalian notes
 
 [romanitalian.github.io](http://romanitalian.github.io)
