@@ -75,3 +75,6 @@ ul.dashed > li:before {
 table.one_row_first_col tr td:first-child{
     white-space:nowrap;
 }
+.preview {
+    width: 45%;
+}
