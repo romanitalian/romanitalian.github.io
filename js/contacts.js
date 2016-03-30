@@ -46,5 +46,5 @@
     console.log('My programming languages and their level (own estimation):');
     console.table(riInfo.languages.programming);
     console.log('\n');
-    console.log(riInfo);
+    console.log('All info: ' +riInfo);
 })();
