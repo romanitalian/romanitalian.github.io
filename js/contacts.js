@@ -45,6 +45,6 @@
     console.log('My email: ' + Utils.binToTxt(riInfo.personal.email));
     console.log('My programming languages and their level (own estimation):');
     console.table(riInfo.languages.programming);
-    console.log('\n');
-    console.log('All info: ' +riInfo);
+    console.log('\n' + 'View all info:\n');
+    console.log(riInfo);
 })();
