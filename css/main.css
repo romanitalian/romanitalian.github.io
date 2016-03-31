@@ -78,3 +78,6 @@ table.one_row_first_col tr td:first-child{
 .preview {
     width: 45%;
 }
+.col_30 {
+    width: 28%;
+}
