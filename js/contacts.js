@@ -43,8 +43,8 @@
     var ri = new Romanitalian();
     var riInfo = ri.getInfo();
     console.log('My email: ' + Utils.binToTxt(riInfo.personal.email));
-    console.log('My programming languages and their level (own estimation):');
+    // console.log('My programming languages and their level (own estimation):');
     console.table(riInfo.languages.programming);
-    console.log('\n' + 'View all info:\n');
-    console.log(riInfo);
+    // console.log('\n' + 'View all info:\n');
+    // console.log(riInfo);
 })();
