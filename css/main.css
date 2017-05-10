@@ -81,3 +81,7 @@ table.one_row_first_col tr td:first-child{
 .col_30 {
     width: 28%;
 }
+
+.wrapper p {
+    margin-bottom: 15px;
+}
